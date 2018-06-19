@@ -1,0 +1,14 @@
+<div class="col-md-12">
+    <h5>{{title}}</h5>
+    <div class="col-sm-12 observation" ng-repeat="remarque in data">
+        <div class="col-sm-11">
+            <textarea class="form-control" ng-model="remarque.text" ng-disabled="!remarque.edit"></textarea>
+        </div>
+        <div class="col-sm-1" ng-show="edit">
+            <span class="glyphicon glyphicon-pencil text-primary" ng-hide="remarque.edit" ng-click="remarque.edit=!remarque.edit;"></span>
+            <span class="glyphicon glyphicon-floppy-disk text-primary" ng-show="remarque.edit" ng-click="remarque.edit=!remarque.edit; update(remarque);"></span>
+            <span class="glyphicon glyphicon-remove-circle text-danger" ng-click="remove($index,remarque.id)"></span>
+        </div>
+    </div>
+    <span class="glyphicon glyphicon-plus text-primary" ng-click="add()" ng-show="edit"></span>
+</div>

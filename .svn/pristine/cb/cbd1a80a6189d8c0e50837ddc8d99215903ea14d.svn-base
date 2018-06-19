@@ -1,0 +1,85 @@
+{
+    
+    "post - uniquement par un medecin":{
+        "type":"gammaGT_glycemie_tsh",
+        "remarques":[
+            {"text": "fdsqdfqsdf"},
+            {"text": "fdsqdfqsdf"}
+        ],
+        "idAgent":10
+    },
+    "getAll : parametre : {créé - programmé - convoqué - absent - effectué}": [
+        {
+            "id": 6548,
+            "datePassage": "timestamp",
+            "site": "alpha",
+            "creneau": "08h00 - 12h00",
+            "idAgent": "10",
+            "matricule": "9876543210a",
+            "nom": "durant",
+            "prenom": "paul",
+            "unite": "alpha",
+            "dateConvocation": "timestamp",
+            "absent": false,
+            "dateDernierBS": "timestamp"
+        }
+    ],
+    "getAll?id='id de l'agent' : appel spécifique pour insertion dans la fiche agent": [
+        {
+            "datePrescription": "timestamp",
+            "datePassage": "timestamp",
+            "id": 6548,
+            "statut": "en cours",
+            "dateConvocation": "timestamp"
+        }
+    ],
+    "get - seulement pour sp et gu": {
+        "id": 1,
+        "datePassage": "timestamp",
+        "datePrescription": "timestamp",
+        "matricule":"1234567890a",
+        "nom": "qsdvsd",
+        "prenom": "sqdv",
+        "dateNaissance": "timestamp",
+        "unite": "alpha",
+        "site": "Beta",
+        "posteTravail": null,
+        "type":"gammaGT_glycemie_tsh",
+        "remarques": [
+            {
+                "id": 8,
+                "text": "texte"
+            }
+        ]
+    },
+    
+    "update - seulement pour medecin":{
+        "id":8,
+        "type":"nfs_tds"
+    },
+    
+    "delete":{
+        "id" : 5
+    },
+    
+    "absent" : {
+        "id" : 5
+    },
+    
+    "addDate - seulement pour SP":{
+        "creneau":{
+            "info1":"10 - duree d'une visite",
+            "valeur":"09h00 - 12h00"
+        },
+        "date":{
+            "periode":false,
+            "debut":"2014-10-02T11:58:30.869Z",
+            "fin":"2014-10-02T11:58:30.869Z",
+            "value":"2014-10-02T11:58:30.869Z"
+        },
+        "site":{
+            "id":5,
+            "valeur":"toto"
+        }
+    }
+}

@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-lg-12 hidden-print action-barre">
+        <action print-view="true" export-view="true" reload-view="true" export-action="csv" reload-action="reload" csv-name="AgentsAConvoquerBS"></action>
+    </div>
+    <div class="col-md-12">
+        <div ng-if="loading" class="loading glyphicon glyphicon-refresh glyphicon-refresh-animate"></div>
+        <table ng-table="BST.ngTable" show-filter="true" class="table table-condensed table-bordered table-hover table-striped" export-csv="csv">
+            <tbody class="table-hover">
+                <tr ng-repeat="bs in $data">
+                    <td data-title="'Fiche de BS'" filter="{'id':'text'}" sortable="'id'">
+                        <a ng-show="access" class="openModal" ng-click="openBS(bs.id)">N° : {{bs.id}}</a>
+                        <span ng-hide="access">N° : {{bs.id}}</span>
+                    </td>
+                    <td data-title="'Matricule'" filter="{'matricule':'text'}" sortable="'matricule'"><a class="openModal" ng-click="openAgent(bs.idAgent)">{{bs.matricule}}</a></td>
+                    <td data-title="'Nom'" filter="{'nom':'text'}" sortable="'nom'">{{bs.nom}}</td>
+                    <td data-title="'Prénom'" filter="{'prenom':'text'}" sortable="'prenom'">{{bs.prenom}}</td>
+                    <td data-title="'Site'" filter="{'site':'select'}"  filter-data="getSites()" sortable="'site'">{{bs.site}}</td>
+                    <td data-title="'Unité'" filter="{'unite':'select'}"  filter-data="getUnites()" sortable="'unite'">{{bs.unite}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <inra-pagination total-items="totalItems" change-page="reload" change-items-per-pages="reload" params="filter"></inra-pagination>
+</div>

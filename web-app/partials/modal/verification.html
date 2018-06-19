@@ -1,0 +1,159 @@
+<div id="verificationModal">
+    <div class="modal-header">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="modal-title" >Rapport de vérification</h3>
+            </div>
+            <div class="col-lg-6">
+                <a tooltip-placement="top" tooltip="fermer" class="pull-right">
+                    <button class="btn btn-xs btn-warning" ng-click="cancel()">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-lg-4">
+                    <label class="control-label text-right">N° : </label>{{verif.id}}
+                </div>
+                <div class="col-lg-4">
+                    <label class="control-label text-right">Date : </label>{{verif.date|date}}
+                </div>
+                <div class="col-lg-4">
+                    <label class="control-label text-right">Type : </label>{{verif.type}}
+                </div>
+                <div class="col-lg-4">
+                    <label class="control-label text-right">Vide : </label>{{verif.vide.length}}
+                </div>
+                <div class="col-lg-4">
+                    <label class=" control-label text-right">Invalides : </label>{{verif.invalide.length}}
+                </div>
+                <div class="col-lg-4">
+                    <label class=" control-label text-right">Doublons champs : </label>{{verif.champsLength}}
+                </div>
+                <div class="col-lg-4">
+                    <label class=" control-label text-right">Doublons lignes : </label>{{verif.ligneLength}}
+                </div>
+                <div class="col-lg-4">
+                    <label class=" control-label text-right">Conflits lignes : </label>{{verif.DBB.length}}
+                </div>
+                <div class="col-lg-4">
+                    <label class=" control-label text-right">Erreurs lignes : </label>{{(verif.ligneLength + verif.champsLength + verif.invalide.length + verif.vide.length + verif.DBB.length)}}
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <accordion close-others="acc.one">
+                    <accordion-group is-open="acc.vide">
+                        <accordion-heading>
+                            Vides : {{verif.vide.length}}
+                            <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': acc.vide, 'glyphicon-chevron-right': !status.open}"></span>
+                        </accordion-heading>
+                        <ul class="list-unstyled">
+                            <li ng-repeat="vide in verif.vide">Ligne {{vide.row}}: le champs "{{vide.dataType}}" est vide</li>
+                        </ul>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="imprimer" href="pdf/rapportVerif?id={{verif.id}}&resume=false&vides=true&invalides=false&champs=false&lignes=false&DBB=false">
+                                <i class="glyphicon glyphicon-print"></i>
+                            </a>
+                        </div>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="export CSV" class="export" ng-mousedown="exportCsv(false,false,false,false,true,false)">
+                                <i class="glyphicon glyphicon-upload"></i>
+                            </a>
+                        </div>
+                    </accordion-group>
+                    <accordion-group is-open="acc.invalide">
+                        <accordion-heading>
+                            Invalides : {{verif.invalide.length}}
+                            <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': acc.invalide, 'glyphicon-chevron-right': !acc.invalide}"></span>
+                        </accordion-heading>
+                        <ul class="list-unstyled">
+                            <li ng-repeat="invalide in verif.invalide">Ligne {{invalide.row}}: le champ "{{invalide.dataType}}" est invalide</li>
+                        </ul>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="imprimer" href="pdf/rapportVerif?id={{verif.id}}&resume=false&vides=false&invalides=true&champs=false&lignes=false&DBB=false">
+                                <i class="glyphicon glyphicon-print"></i>
+                            </a>
+                        </div>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="export CSV" class="export" ng-mousedown="exportCsv(false,false,false,true,false,false)">
+                                <i class="glyphicon glyphicon-upload"></i>
+                            </a>
+                        </div>
+                    </accordion-group>
+                    <accordion-group is-open="acc.champ">
+                        <accordion-heading>
+                            Doublons Champs : {{verif.champsLength}}
+                            <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': acc.champ, 'glyphicon-chevron-right': !acc.champ}"></span>
+                        </accordion-heading>
+                        <ul class="list-unstyled">
+                            <li ng-repeat="champ in verif.champs">{{champ}}</li>
+                        </ul>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="imprimer" href="pdf/rapportVerif?id={{verif.id}}&resume=false&vides=false&invalides=false&champs=true&lignes=false&DBB=false">
+                                <i class="glyphicon glyphicon-print"></i>
+                            </a>
+                        </div>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="export CSV" class="export" ng-mousedown="exportCsv(false,true,false,false,false,false)">
+                                <i class="glyphicon glyphicon-upload"></i>
+                            </a>
+                        </div>
+                    </accordion-group>
+                    <accordion-group is-open="acc.ligne">
+                        <accordion-heading>
+                            Doublons Ligne : {{verif.ligneLength}}<span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': acc.ligne, 'glyphicon-chevron-right': !acc.ligne}"></span>
+                        </accordion-heading>
+                        <ul class="list-unstyled">
+                            <li ng-repeat="ligne in verif.lignes">{{ligne}}: Lignes identiques</li>
+                        </ul>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="imprimer" href="pdf/rapportVerif?id={{verif.id}}&resume=false&vides=false&invalides=false&champs=false&lignes=true&DBB=false">
+                                <i class="glyphicon glyphicon-print"></i>
+                            </a>
+                        </div>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="export CSV" class="export" ng-mousedown="exportCsv(false,false,true,false,false,false)">
+                                <i class="glyphicon glyphicon-upload"></i>
+                            </a>
+                        </div>
+                    </accordion-group>
+                    <accordion-group is-open="acc.BDD">
+                        <accordion-heading>
+                            Conflits avec la base de donnée : {{verif.DBB.length}}
+                            <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': acc.DBB, 'glyphicon-chevron-right': !acc.DBB}"></span>
+                        </accordion-heading>
+                        <ul class="list-unstyled">
+                            <li ng-repeat="db in verif.DBB">Ligne {{db.row}}: {{db.info1}}</li>
+                        </ul>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="imprimer" href="pdf/rapportVerif?id={{verif.id}}&resume=false&vides=false&invalides=false&champs=false&lignes=false&DBB=true">
+                                <i class="glyphicon glyphicon-print"></i>
+                            </a>
+                        </div>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="export CSV" class="export" ng-mousedown="exportCsv(false,false,false,false,false,true)">
+                                <i class="glyphicon glyphicon-upload"></i>
+                            </a>
+                        </div>
+                    </accordion-group>
+                </accordion>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-primary btn-sm" href="pdf/rapportVerif?id={{verif.id}}&resume=true&vides=true&invalides=true&champs=true&lignes=true&DBB=true">
+            <i class="glyphicon glyphicon-print"></i> Imprimer
+        </a>
+        <a class="btn btn-primary btn-sm export" ng-mousedown="exportCsv(true,true,true,true,true,true)">
+            <i class="glyphicon glyphicon-upload"></i> Export csv
+        </a>
+        <button class="btn btn-warning btn-sm" ng-click="cancel()">
+            <i class="glyphicon glyphicon-remove"></i> Fermer
+        </button>
+    </div>
+</div>

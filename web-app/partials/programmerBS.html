@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-lg-12 hidden-print action-barre">
+        <button class="btn btn-xs btn-primary" ng-click="openModalDate()" ng-if="sp">
+            <i class="glyphicon glyphicon-plus" ></i> Nouvelle date BS
+        </button>
+        <action print-view="true" export-view="true" reload-view="true" export-action="csv" reload-action="reload" csv-name="AProgrammerBS"></action>
+    </div>
+    <div class="col-md-12">
+        <div ng-if="loading" class="loading glyphicon glyphicon-refresh glyphicon-refresh-animate"></div>
+        <table ng-table="BST.ngTable" show-filter="true" class="table table-condensed table-bordered table-hover table-striped" export-csv="csv">
+            <tbody class="table-hover">
+                <tr ng-repeat="bs in $data">
+                    <td data-title="'Date de BS'" filter="{'datePassage':'text'}" sortable="'datePassage'">{{bs.datePassage|date}}</td>
+                    <td data-title="'Site'" filter="{'site':'select'}" filter-data="getSites()" sortable="'site'">{{bs.site}}</td>
+                    <td data-title="'Créneau'" filter="{'creneau':'text'}" sortable="'creneau'">{{bs.heureDebut}} - {{bs.heureFin}}</td>
+                    <td data-title="'Matricule'" filter="{'matricule':'text'}" sortable="'matricule'"><a class="openModal" ng-click="openAgent(bs.idAgent)">{{bs.matricule}}</a></td>
+                    <td data-title="'Nom'" filter="{'nom':'text'}" sortable="'nom'">{{bs.nom}}</td>
+                    <td data-title="'Prénom'" filter="{'prenom':'text'}" sortable="'prenom'">{{bs.prenom}}</td>
+                    <td data-title="'Unité'" filter="{'unite':'select'}" filter-data="getUnites()" sortable="'unite'">{{bs.unite}}</td>
+                    <td data-title="'Fiche de BS'" filter="{'id':'text'}" sortable="'id'">
+                        <a ng-show="access" class="openModal" ng-click="openBS(bs.id)">n° : {{bs.id}}</a>
+                        <span ng-hide="access">n° : {{bs.id}}</span>
+                    </td>
+                    <td class="action">
+                        <a tooltip-placement="top" tooltip="convoquer" ng-show="access || gu">
+                            <span class="glyphicon glyphicon-envelope text-primary" ng-click="email(bs);"></span>
+                        </a>
+                        <a tooltip-placement="top" tooltip="effacer" ng-show="sp">
+                            <span class="glyphicon glyphicon-remove-circle text-danger" ng-click="initialiser(bs.id)"></span>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <inra-pagination total-items="totalItems" change-page="reload" change-items-per-pages="reload" params="filter"></inra-pagination>
+</div>

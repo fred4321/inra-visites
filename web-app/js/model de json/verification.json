@@ -1,0 +1,35 @@
+{
+    "getAll": [
+        {
+            "id": 654984,
+            "date": "timestamp",
+            "type": "WADAA06C",
+            "statut": "ok"
+        }
+    ],
+    "rapportVerif?id='id demandé'": {
+        "id": 654984,
+        "date": "2014-10-27T14:38:08Z",
+        "type": "WADAA06C",
+        "statut": "ok",
+        "champs": [ 
+            "Ligne 2, Ligne 3, Ligne 4 champ 'matricule' identique",
+            "Ligne 8, Ligne 9 champ 'matricule' identique"
+        ],
+        "champsLength": 377,
+        "invalide": [
+            {"dataType":"unite", "info1":"null", "rapportName":"WACAT027", "row":85, "typeError":"invalide", "id":862}
+        ],
+        "ligneLength": 188,
+        "lignes": [
+            "Ligne 2, Ligne 3, Ligne 4",
+            "Ligne 8, Ligne 9, Ligne 13", 
+            "Ligne 14, Ligne 15", "Ligne 29, Ligne 30"
+        ],
+        "vide": [
+            {"dataType":"dateNaissance", "info1":null, "rapportName":"WACAT027", "row":141, "typeError":"vide", "id":997}
+        ]
+    },
+    
+    "/pdf/rapportVerif?id=2&resume=true&vides=true&invalides=true&champs=true&lignes=true": "rendu pdf"
+}

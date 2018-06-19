@@ -1,0 +1,435 @@
+/************ Thème général ************/
+
+/* latin-ext <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>*/
+@font-face {
+    font-family: 'Bitter';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Bitter-Regular'), url(../fonts/bitter-regular-ext.woff2) format('woff2');
+    src: local('Bitter-Regular'), url(../fonts/bitter-regular.woff) format('woff');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+    font-family: 'Bitter';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Bitter-Regular'), url(../fonts/bitter-regular.woff2) format('woff2');
+    src: local('Bitter-Regular'), url(../fonts/bitter-regular.woff) format('woff');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+html body{
+    padding: 0 7%;
+    z-index: 1;
+    font-family: 'Bitter', serif;
+}
+
+.glyphicon-refresh-animate{
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 2000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 2000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 2000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    animation-name: spin;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+body td, body div, body span, body span {
+    font-size: 12px;
+}
+
+body h1, body h2, body h3, body h4, body h5, body h6{
+    font-weight: bold;
+    color: #78a12f;
+    text-transform: uppercase;
+    margin: 5px 0;
+}
+
+body h1{
+    font-size: 26px;
+    line-height: 26px;
+}
+body h2{
+    font-size: 20px;
+    line-height: 20px;
+}
+body h3{
+    font-size: 13px;
+    line-height: 13px;
+}
+body h4{
+    font-size: 11px;
+    line-height: 11px;
+}
+body h5{
+    font-size: 10px;
+    line-height: 10px;
+}
+body h6{
+    font-size: 8px;
+    line-height: 8px;
+}
+
+body a:hover{
+    text-decoration: none;
+}
+
+body .glyphicon{
+    cursor: pointer;
+}
+
+.input-xs, .table thead input, .table thead select{
+    height: 24px;
+    font-size: 12px;
+    line-height: 1em;
+    border-radius: 3px;
+    font-weight: normal;
+}
+
+select.input-xs, .table thead select{
+    padding: 0;
+}
+
+.ng-table-pagination{
+    display: none;
+}
+
+body .panel-heading{
+    padding: 1px 10px;
+}
+body input[type="checkbox"],body input[type="radio"], body input[type="radio"]{
+    margin-top: 2px;
+}
+input.ng-invalid.ng-invalid-required, input.ng-invalid.ng-invalid-email,
+input.ng-invalid.ng-invalid-pattern,input.ng-invalid.ng-invalid-maxlength,
+input.ng-invalid.ng-invalid-minlength,select.ng-invalid.ng-invalid-required{
+    background-color: #F2DEDE;
+}
+.list-striped li div { background: #f2f2f3; }
+.list-striped li:nth-child(odd) div { background: #D7EBCC; }
+.list-striped li div .tooltip-inner { background: black; }
+.list-striped li div:first-child:hover { background: #9EB690; }
+
+/****************** Barre de navigation********************/
+
+.navbar.navbar-default{
+    padding-top: 5px;
+}
+
+.navbar img{
+    padding: 5px 0;
+    height: 50px;
+}
+
+.navbar .glyphicon.glyphicon-user{
+    float: none;
+}
+
+.nav-tabs a, nav .mainMenu{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+nav .mainMenu{
+    font-size: 15px;
+}
+body .nav-tabs a{
+    font-size: 12px;
+    padding: 2px 10px;
+    cursor: pointer;
+}
+
+.modal-body{
+    padding: 5px 15px;
+}
+
+.panel{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.panel-body{
+    padding: 5px;
+}
+
+.dropdown-menu a{
+    cursor: pointer;
+}
+/************* bloc principal *******************/
+.content-view{
+    padding-top: 10px;
+}
+
+/************* Barre d'action *******************/
+.action-barre{
+    text-align: right;
+}
+.action-barre select{
+    width: 150px;
+    display: inline;
+}
+
+/************* pagination ***********************/
+.block-pagination>*{
+    height: 35px;
+    padding: 5px 15px 5px 15px;
+}
+.block-pagination select{
+    display: inline-block;
+    width: 50px;
+    margin-left: 10px
+}
+.block-pagination ul{
+    vertical-align: middle;
+    float: right;
+    margin: 2px 0;
+}
+
+.block-pagination .pagination>li.active a{
+    background-color: #78a12f;
+    border-color: #78a12f;
+    color:#ffffff;
+}
+
+.block-pagination .pagination>li>a{
+    color: #78a12f;
+    padding: 1px 5px;
+}
+
+.block-pagination .option{
+    display: inline-block;
+    text-align: center;
+}
+
+.block-pagination .option select{
+    width: 100px;
+}
+/***************** Tableau **********************/
+table.table{
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+table .glyphicon-sort{
+    color: #DADADA
+}
+
+tbody td:last-child a{
+    margin-left: 5px;
+}
+
+table .action{
+    width: 65px;
+}
+
+table td select.bg-warning{
+    background-color: #f2dede;
+}
+
+/***************** Calendrier *******************/
+.calendar{
+    height: 700px;
+    width: 700px;
+}
+
+.inputDate{
+    margin : 5px 0;
+}
+
+/***************** Modal ************************/
+.modal{
+    background-color: rgba(95, 114, 59, 0.3);
+}
+
+.openModal{
+    color: #78a12f;
+    cursor: pointer;
+}
+
+#ficheAgent .visite{
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 5px;
+}
+
+#ficheAgent .modal-header button{
+    float: right;
+}
+#ficheAgent thead{
+    font-weight: bold;
+}
+
+#dateVM tr div{
+    line-height: 25px;
+}
+#dateVM .modal-body .row button{
+    margin: 10px 10px 0 10px;
+}
+#vmModal img{
+    width: 100px;
+}
+
+#vmModal #prescription .col-md-12{
+    margin-bottom: 10px;
+}
+
+#vmModal #prescription .pbs h6{
+    margin-right: 15px;
+}
+
+#vmModal .form-group{
+    padding: 0;
+}
+
+#vmModal #prescription .pbs .col-sm-12{
+    padding-left: 15px;
+}
+
+#vmModal .desactive{
+    cursor: not-allowed;
+}
+
+#vmModal label.checkbox-inline{
+    margin: 5px;
+}
+
+#vmModal label.checkbox-inline input{
+    top:3px;
+    position: relative;
+}
+
+#vmModal .panel-success input[type="checkbox"]{
+    margin-top: 25px;
+}
+#vmModal .alert{
+    margin-bottom: 0;
+}
+
+#verificationModal .panel-title{
+    color:#78a12f;
+}
+
+#verificationModal .panel-title span{
+    cursor: pointer;
+}
+
+/***************** Login ***********************/
+.login .panel-body{
+    padding: 15px;
+}
+
+/***************** Import **********************/
+.import .alert{
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.import .panel-title{
+    padding: 5px;
+}
+
+/**************** referentiel ******************/
+#referentiel li label{
+    margin-bottom: 0;
+}
+#referentiel #filterGroupe{
+    width: 110px;
+    display: inline;
+}
+/**************** Journeaux ********************/
+#journeaux td:nth-child(2), #journeaux td:nth-child(8) {
+    width: 190px;
+}
+/*************** formulaire agent **************/
+.form-agent .alert{
+    margin-bottom: 2px;
+}
+
+/*************** nouvel agent ****************/
+.nouveau{
+    padding: 10px;
+}
+
+/*************** observation *********************/
+.observation{
+    margin-bottom: 5px;
+    padding-left: 0;
+}
+
+.observation div{
+    padding-left: 0;
+}
+
+/****************** Statistique ******************/
+
+.statistiques .btn{
+    float: right;
+}
+.statistiques .panel-heading{
+    margin: 0;
+
+}
+.statistiques .panel-heading h4{
+    line-height: 30px;
+    padding: 3px 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+/****************** Animation ********************/
+
+.loading {
+    font-size: 25px;
+    left: 30px;
+    color: #78a12f;
+    position: fixed;
+    top: 15px;
+}
+
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter,
+.animate-repeat.ng-leave {
+    -webkit-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+}
+
+.animate-repeat.ng-leave.ng-leave-active,
+.animate-repeat.ng-move,
+.animate-repeat.ng-enter {
+    opacity:0;
+}
+
+.animate-repeat.ng-leave,
+.animate-repeat.ng-move.ng-move-active,
+.animate-repeat.ng-enter.ng-enter-active {
+    opacity:1;
+}

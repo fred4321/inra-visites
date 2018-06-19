@@ -1,0 +1,151 @@
+{
+    "getAll : tous les agents pour profil admin, sp et medecin, seulement ceux aillant la même unité que les gestionnaire d'unité": [
+        {
+            "vmID": 5,
+            "vmDate": 12885336230062,
+            "vmNature": "VSP",
+            "periodicite": "6 mois",
+            "insee": "654984312558745",
+            "convocation": "timestamp",
+            "matricule": "0123456789a",
+            "dateSortie": "timestamp",
+            "prenom": "sqdv",
+            "nom": "toto",
+            "site": "Beta",
+            "id": 1,
+            "unite": "alpha"
+        }
+    ],
+    "getAllPrioritaireVm": [
+        {
+            "convocation": "2014-10-10T14:14:28Z",
+            "dateSortie": "",
+            "id": 2,
+            "insee": "",
+            "matricule": "95197854v",
+            "nom": "Dupond",
+            "periodicite": "6 mois",
+            "prenom": "Louis",
+            "site": "INRA sud recherche viticole",
+            "unite": "Viticulture et oenologie",
+            "vmDate": "2014-10-10T11:59:14Z",
+            "vmID": 5,
+            "vmNature": "FT"
+        }
+    ],
+    "getPrioritairesVM : tous les agents prioritaire VM pour profil admin, sp et medecin, seulement ceux aillant la même unité que les gestionnaire d'unité ": [
+        {
+            "vmID": 5,
+            "vmDate": 12885336230062,
+            "vmNature": "VSP",
+            "periodicite": "6 mois",
+            "insee": "654984312558745",
+            "convocation": "timestamp",
+            "matricule": "0123456789a",
+            "dateSortie": "timestamp",
+            "prenom": "sqdv",
+            "nom": "toto",
+            "site": "Beta",
+            "id": 1,
+            "unite": "alpha"
+        }
+    ],
+    "get": {
+        "archive": false,
+        "courriel": "tot@toto.com",
+        "dateEntree": "timestamp",
+        "dateArretTravail": "timestamp",
+        "dateNaissance": "timestamp",
+        "dateCreation": "timestamp",
+        "dateModification": "timestamp",
+        "dateSortie": "timestamp",
+        "dateEntree": "timestamp",
+        "departement": "95",
+        "genre": "M",
+        "groupe": null,
+        "insee": null,
+        "libEmploi": null,
+        "lieuNaissance": null,
+        "matricule": "0123456789a",
+        "nationalite": null,
+        "nom": "qsdvsd",
+        "numTel": null,
+        "periodicite": "6 mois",
+        "posteTravail": null,
+        "prenom": "sqdv",
+        "site": "Beta",
+        "id": 1,
+        "gu": "nom gu",
+        "agu": "email gu",
+        "unite": "alpha",
+        "prioritaireBS": true,
+        "prioritaireVM": false,
+        "natureVM": "VE",
+        "vm": [
+            {
+                "id": 5,
+                "date": "2014-09-23T11:45:33Z",
+                "statut": "en cours",
+                "natureVM": "SFP",
+                "dateEnvoisCourrierAgent": "2014-09-23T11:45:33Z"
+            }
+        ],
+        "bs": [
+            {
+                "datePrescription": "2014-09-23T11:45:33Z",
+                "datePassage": "2014-09-23T11:45:33Z",
+                "id": 5,
+                "statut": "en cours",
+                "dateConvocation": "2014-09-23T11:45:33Z"
+            }
+        ]
+    },
+    "post : seul les champs nom, prenom, matricule et unite sont obligatoires": {
+        "agu": "sdfg@sdfg",
+        "courriel": "s@sdfg",
+        "dateEntree": "2014-09-25T14:31:40Z",
+        "dateNaissance": "2014-09-25T14:31:40Z",
+        "departement": "sdfg",
+        "derniereVM": "2014-09-25T14:31:40Z",
+        "genre": "M",
+        "gu": "sdfg",
+        "insee": "646846548648684",
+        "lieuNaissance": "sdfgd",
+        "matricule": "9876543125z",
+        "nationalite": "sdfg",
+        "nom": "qsdf",
+        "numTel": "6546546546",
+        "periodicite": "1 ans",
+        "prenom": "sqdf",
+        "site": "alpha",
+        "unite": "beta"
+    },
+    "update : seul le champ id est obligatoire , les gu ne peuvent agir que sur les agents de l'unité qu'ils gèrent": {
+        "agu": "sdfg@sdfg",
+        "courriel": "s@sdfg",
+        "dateEntree": "2014-09-25T14:31:40Z",
+        "dateNaissance": "2014-09-25T14:31:40Z",
+        "departement": "sdfg",
+        "derniereVM": "2014-09-25T14:31:40Z",
+        "genre": "M",
+        "gu": "sdfg",
+        "insee": "646846548648684",
+        "lieuNaissance": "sdfgd",
+        "matricule": "9876543125z",
+        "nationalite": "sdfg",
+        "nom": "qsdf",
+        "numTel": "6546546546",
+        "periodicite": "1 ans",
+        "prenom": "sqdf",
+        "site": "alpha",
+        "unite": "beta",
+        "prioritaireBS": true,
+        "prioritaireVM": true
+    },
+    "delete : les gu ne peuvent agir que sur les agents de l'unité qu'ils gèrent": {
+        "id": 10
+    }
+
+}
+
+

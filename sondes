@@ -1,0 +1,30 @@
+#!/bin/bash
+#Commande de check
+
+## RAM
+./check_centreon_snmp_memory -H 172.16.10.4 -v v2c -C public -w 90 -c 95 -s 10
+
+## CPU
+./check_centreon_snmp_loadaverage -H 172.16.10.4 -w 2,3,5 -c 3,4,6
+
+## Disque
+./check_centreon_snmp_remote_storage -H 172.16.10.4 -d "/" -n -w 80 -c 90
+./check_centreon_snmp_remote_storage -H 172.16.10.4 -d "/srv/data" -n -w 80 -c 90
+
+## Packt loss
+./check_centreon_snmp_packetErrors -H 172.16.10.4 -w 80 -c 100
+
+
+## Mysql
+/check_mysql_connections -H 172.16.10.11 -u root -p novelios#mysql -w 100 -c 150
+
+
+## Mongo (Installer le package Mongoshll blog.ruanbekker.com/blog/2017/08/24/setup-mongodb-client-on-centos-6/)
+./check_mongodb -h 172.16.10.11 -d local -q "db.test.findOne()"
+
+
+## Redis
+./check_redis.py -H 172.16.10.11 -t mem -w 800 -c 1000
+
+##HTTP
+./check_http.py -w 1 -c 2 http://eiffage-pilote.novelios.com/

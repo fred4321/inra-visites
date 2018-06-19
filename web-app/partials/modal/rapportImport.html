@@ -1,0 +1,149 @@
+<div id="verificationModal">
+    <div class="modal-header">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="modal-title" >Rapport d'Importation</h3>
+            </div>
+            <div class="col-lg-6">
+                <a tooltip-placement="top" tooltip="fermer" class="pull-right">
+                    <button class="btn btn-xs btn-warning" ng-click="cancel()">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-lg-3">
+                    <label class="control-label text-right">N° :</label>{{rapport.id}}
+                </div>
+                <div class="col-lg-4">
+                    <label class="control-label text-right">Date :</label>{{rapport.date|date:'yyyy-MM-dd HH:mm:ss'}}
+                </div>
+                <div class="col-lg-3">
+                    <label class="control-label text-right">Type :</label>{{rapport.type}}
+                </div>
+                <div class="col-lg-2">
+                    <label class="control-label text-right">erreurs:</label>{{rapport.erreur.length}}
+                </div>
+                <div class="col-lg-3">
+                    <label class=" control-label text-right">Modifiées :</label>{{rapport.modifier.length}}
+                </div>
+                <div class="col-lg-4">
+                    <label class=" control-label text-right">Nouveaux agents :</label>{{rapport.nouveau.length}}
+                </div>
+                <div class="col-lg-3">
+                    <label class=" control-label text-right">Agents prioritaires:</label>{{rapport.prioritaire.length}}
+                </div>
+                <div class="col-lg-2" ng-repeat="(type, qts) in rapport.totalTypePrioritaire">
+                    {{type}} : {{qts}}
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <accordion close-others="acc.one">
+                    <accordion-group is-open="acc.nouveau">
+                        <accordion-heading>
+                            Nouveaux agents : {{rapport.nouveau.length}}
+                            <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': acc.nouveau, 'glyphicon-chevron-right': !status.nouveau}"></span>
+                        </accordion-heading>
+                        <ul class="list-unstyled">
+                            <li ng-repeat="n in rapport.nouveau">
+                                NOUVEAU : Agent {{n.matricule}} {{n.prenom}} {{n.nom}}. Ligne {{n.row}}
+                            </li>
+                        </ul>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="imprimer" href="pdf/rapportImport?id={{rapport.id}}&resume=false&nouveau=true&modifier=false&prioritaire=false&erreur=false">
+                                <span class="glyphicon glyphicon-print"></span>
+                            </a>
+                        </div>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="export CSV" class="export" ng-mousedown="exportCsv(false,true,false,false,false)">
+                                <span class="glyphicon glyphicon-cloud-download"></span>
+                            </a>
+                        </div>
+                    </accordion-group>
+                    <accordion-group is-open="acc.modif">
+                        <accordion-heading>
+                            Modifiées : {{rapport.modifier.length}}
+                            <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': acc.modif, 'glyphicon-chevron-right': !acc.modif}"></span>
+                        </accordion-heading>
+                        <ul class="list-unstyled">
+                            <li ng-repeat="m in rapport.modifier">
+                                MODIFICATION : Agent {{m.matricule}} {{m.prenom}} {{m.nom}}. Ligne {{m.row}}
+                            </li>
+                        </ul>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="imprimer" href="pdf/rapportImport?id={{rapport.id}}&resume=false&nouveau=false&modifier=true&prioritaire=false&erreur=false">
+                                <span class="glyphicon glyphicon-print"></span>
+                            </a>
+                        </div>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="export CSV" class="export" ng-mousedown="exportCsv(false,false,true,false,false)">
+                                <span class="glyphicon glyphicon-cloud-download"></span>
+                            </a>
+                        </div>
+                    </accordion-group>
+                    <accordion-group is-open="acc.archive">
+                        <accordion-heading>
+                            Agents prioritaires : {{rapport.prioritaire.length}}
+                            <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': acc.archive, 'glyphicon-chevron-right': !acc.archive}"></span>
+                        </accordion-heading>
+                        <ul class="list-unstyled">
+                            <li ng-repeat="p in rapport.prioritaire">
+                                PRIORITAIRE : Agent {{p.matricule}} {{p.prenom}} {{p.nom}} : EN LISTE PRIORITAIRE NATURE de Visite {{p.info}}
+                            </li>
+                        </ul>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="imprimer" href="pdf/rapportImport?id={{rapport.id}}&resume=false&nouveau=false&modifier=false&prioritaire=true&erreur=false">
+                                <span class="glyphicon glyphicon-print"></span>
+                            </a>
+                        </div>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="export CSV" class="export" ng-mousedown="exportCsv(false,false,false,true,false)">
+                                <span class="glyphicon glyphicon-cloud-download"></span>
+                            </a>
+                        </div>
+                    </accordion-group>
+                    <accordion-group is-open="acc.erreur">
+                        <accordion-heading>
+                            Erreurs : {{rapport.erreur.length}}
+                            <span class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': acc.erreur, 'glyphicon-chevron-right': !acc.erreur}"></span>
+                        </accordion-heading>
+                        <ul class="list-unstyled">
+                            <li ng-repeat="e in rapport.erreur">
+                                ERREUR : Agent {{e.matricule}}. Ligne {{e.row}} : {{e.erreur}}
+                            </li>
+                        </ul>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" tooltip="imprimer" href="pdf/rapportImport?id={{rapport.id}}&resume=false&nouveau=false&modifier=false&prioritaire=false&erreur=true">
+                                <span class="glyphicon glyphicon-print"></span>
+                            </a>
+                        </div>
+                        <div class="col-xs-6 text-center text-primary">
+                            <a tooltip-placement="right" class="export" tooltip="export CSV" ng-mousedown="exportCsv(false,false,false,false,true)">
+                                <span class="glyphicon glyphicon-cloud-download"></span>
+                            </a>
+                        </div>
+                    </accordion-group>
+                </accordion>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary btn-sm">
+            <span class="glyphicon glyphicon-refresh"></span> Actualiser
+        </button>
+        <a class="btn btn-primary btn-sm" href="pdf/rapportImport?id={{rapport.id}}&resume=true&nouveau=true&modifier=true&prioritaire=true&erreur=true">
+            <span class="glyphicon glyphicon-print"></span> Imprimer
+        </a>
+        <a class="btn btn-primary btn-sm export" ng-mousedown="exportCsv(true,true,true,true,true)">
+            <span class="glyphicon glyphicon-upload"></span> Export csv
+        </a>
+        <button class="btn btn-warning btn-sm" ng-click="cancel()">
+            <span class="glyphicon glyphicon-remove"></span> Fermer
+        </button>
+    </div>
+</div>

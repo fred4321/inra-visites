@@ -1,0 +1,50 @@
+{
+    "getAll": [
+        {
+            "id": 8,
+            "identifiant": "toto",
+            "profil": "sp",
+            "email": "toto@toto.com",
+            "unite":"alpha",
+            "password":"oiuqsc"
+        }
+    ],
+    
+    "getGu" : [
+        {
+            "id": 8,
+            "identifiant": "toto",
+            "profil": "sp",
+            "email": "toto@toto.com"
+        }
+    ],
+    "post": {
+        "identifiant": "toto",
+        "profil": "sp",
+        "email": "toto@toto.com",
+        "password": "password",
+        "unite":"nom unite"
+    },
+    "update": {
+        "id": 5,
+        "identifiant": "toto",
+        "profil": "sp",
+        "email": "toto@toto.com",
+        "password": "password",
+        "unite":"nom unite"
+    },
+    "delete": {
+        "id": 5
+    },
+    "login : retour : Code erreur : 200 : Connexion réussie. - 204 : Aucun utilisateur avec cet identifiant - 203 : mot de passe incorrect": {
+        "envoie en data": {
+            "identifiant": "toto",
+            "password": "toto"
+        },
+        "retour": {
+            "profil": "sp"
+        }
+
+    },
+    "logout": "aucun paramètre envoyé"
+}

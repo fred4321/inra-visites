@@ -1,0 +1,15 @@
+{
+    "tableau - post":{
+        "title":"titre",
+        "colonne" : 5,
+        "titles" : ["titre 1 ","titre 2","titre 3","titre 4","titre 5"],
+        "data" : [
+            ["colonne 1","colonne 2","colonne 3","colonne 4","colonne 5"]
+        ]
+    },
+    
+    "ficheVM - get with param : id":{},
+    "ficheAgent - get with param : id":{},
+    "ficheBS - get with param : id":{},
+    "/pdf/rapportVerif?id=2&resume=true&vides=true&invalides=true&champs=true&lignes=true": "rendu pdf"
+}
