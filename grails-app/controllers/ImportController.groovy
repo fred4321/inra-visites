@@ -219,17 +219,19 @@ class ImportController {
                 XSSFCell unite =   row.getCell(6)
                 def dateDerniereVM
 
-                try{
-                    dateSortie = dateSortie.getDateCellValue()
-                }catch(e){
-                    println "Problème de date pour ${prenom} ${nom}"
-                }
 
 
-                def agent= Agent.findByMatricule(matricule.toString())
 
+                def agent= Agent.findByMatricule(matricule.toString().trim())
+                println agent
                 if(agent){
-                    agent.dateSortie = dateSortie
+                    try{
+                        dateSortie = dateSortie.getDateCellValue()
+                        agent.dateSortie = dateSortie
+                    }catch(e){
+                        println "Problème de date pour ${matricule}"
+                    }
+
                     if(unite){
                         def uniteFind = Unite.findByNom(unite.toString())
                         if(uniteFind){
@@ -249,7 +251,7 @@ class ImportController {
                     println agent.errors
 
                 }else{
-                    println "Impossible de trouver $nom $prenom"
+                    println "Impossible de trouver $matricule"
                 }
             }
 
