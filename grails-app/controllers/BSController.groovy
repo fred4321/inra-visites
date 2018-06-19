@@ -299,7 +299,7 @@ class BSController {
                     bs.dateConvocation = new Date()
                     if(bs.validate()){
                         bs.save()
-                        def emails = [bs.agent.courriel, "visites-medicales@rennes.inra.fr"]
+                        def emails = [bs.agent.courriel, "medtlse.medtlse@inra.fr"]
                         if(bs.agent.gu && bs.agent.gu.email){
                             emails.push(bs.agent.gu.email)
                         }

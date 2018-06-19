@@ -59,12 +59,12 @@ grails {
         // filteringCodecForContentType.'text/html' = 'html'
     }
     mail {
-        host = "smtp.rennes.inra.fr"
-        port = 25
-//        username = "tbelutaud@novelios.com"
-//        password = "novelios00"
-        props = ["mail.smtp.starttls.enable":"true", 
-                  "mail.smtp.port":"25"]
+        host = "smtp.inra.fr"
+        port = 587
+        username = "mmedtlse"
+        password = "b]Quec7u"
+        props = ["mail.smtp.starttls.enable":"true",
+                 "mail.smtp.port":"587"]
     }
 }
 

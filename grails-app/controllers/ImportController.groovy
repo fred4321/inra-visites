@@ -203,5 +203,59 @@ class ImportController {
         return [status : 415]
     }
 
+    def importToulouse(){
+        def file = new File("importToulouse2.xlsx")
+        if(file.exists()) {
+            def xlsx = OPCPackage.open(file)
+            XSSFWorkbook workbook = new XSSFWorkbook(xlsx)
+            XSSFSheet sheet = workbook.getSheetAt(0)
+            def lastRowNum = sheet.getLastRowNum()
+
+            (1..lastRowNum).each{
+                XSSFRow row = sheet.getRow(it)
+                XSSFCell matricule =   row.getCell(0)
+                XSSFCell dateSortie =   row.getCell(9)
+                XSSFCell site =   row.getCell(8)
+                XSSFCell unite =   row.getCell(6)
+                def dateDerniereVM
+
+                try{
+                    dateSortie = dateSortie.getDateCellValue()
+                }catch(e){
+                    println "Problème de date pour ${prenom} ${nom}"
+                }
+
+
+                def agent= Agent.findByMatricule(matricule.toString())
+
+                if(agent){
+                    agent.dateSortie = dateSortie
+                    if(unite){
+                        def uniteFind = Unite.findByNom(unite.toString())
+                        if(uniteFind){
+                            agent.unite = uniteFind
+                            def guFind = User.findByUnite(uniteFind)
+                            if(guFind){
+                                agent.gu = guFind
+                            }
+                        }
+                    }
+
+                    if(site){
+                        agent.site = site.toString()
+                    }
+
+                    agent.save()
+                    println agent.errors
+
+                }else{
+                    println "Impossible de trouver $nom $prenom"
+                }
+            }
+
+            xlsx.close()
+            return [status : 200]
+        }
+    }
 
 }

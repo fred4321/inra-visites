@@ -295,7 +295,7 @@ class VMController {
                 vm.agent.prioritaireVM = false
                 if(vm.validate()){
                     vm.save()
-                    def emails = [vm.agent.courriel, "visites-medicales@rennes.inra.fr"]
+                    def emails = [vm.agent.courriel, "medtlse.medtlse@inra.fr"]
                     vm.agent.gu ? emails.push(vm.agent.gu.email) : null;
                     try {
                         messageService.send(messageService.prepareMessage(session.user, emails, ("INRA - Convocation de "+vm.agent.nom+" "+vm.agent.prenom+" à la visite médicale le "+vm.date.format('dd/MM/yyyy')+"."), messageService.vmConvocation(vm)))
@@ -334,7 +334,7 @@ class VMController {
                         def vmEmail = vm.getFullVm()
                         def fullNature = Params.findWhere(groupe:"natureVM", valeur : vmEmail.natureVM)
                         vmEmail.natureVM = fullNature ? fullNature.info1 : vmEmail.natureVM
-                        def emails = [vm.agent.courriel, "visites-medicales@rennes.inra.fr"]
+                        def emails = [vm.agent.courriel, "medtlse.medtlse@inra.fr"]
                         messageService.send(messageService.prepareMessage(session.user, emails, "INRA - Résultat de la Visite médicale de "+ vm.agent.nom + " " + vm.agent.prenom +", le "+ vm.sDate, g.render(template:'../pdf/vm', model: [vm:vmEmail, user:[profil:"agent"]])))
                         log.info("vm "+vm.id+" cloturé. Envoie du mail récapitulatif")
                         return [status : 200, data : vm]
@@ -365,7 +365,7 @@ class VMController {
                         def vmEmail = vm.getFullVm()
                         def fullNature = Params.findWhere(groupe:"natureVM", valeur : vmEmail.natureVM)
                         vmEmail.natureVM = fullNature ? fullNature.info1 : vmEmail.natureVM
-                        def emails = [vm.agent.courriel, "visites-medicales@rennes.inra.fr"]
+                        def emails = [vm.agent.courriel, "medtlse.medtlse@inra.fr"]
                         messageService.send(messageService.prepareMessage(session.user, emails, "INRA - Résultat de la Visite médicale de "+ vm.agent.nom + " " + vm.agent.prenom +", le "+ vm.sDate, g.render(template:'../pdf/vm', model: [vm:vmEmail, user:[profil:"agent"]])))
                         
                         log.info("vm "+vm.id+" - Fin de la visite médical et envoi du mail à l'agent")
