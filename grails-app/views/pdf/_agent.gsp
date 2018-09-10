@@ -54,7 +54,7 @@
             </tr>
             <tr>
                 <td><b>Périodicité : </b>${agent.periodicite}</td>
-                <td><b>Dernière VM : </b>todo</td>
+                <td><b>Dernière VM : </b><g:formatDate format="dd MMM yyyy" date="${agent.dateDerniereVM}"/></td>
                 <td><b>Mail : </b>${agent.courriel}</td>
             </tr>
             <tr>
