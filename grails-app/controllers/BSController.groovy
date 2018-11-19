@@ -78,6 +78,13 @@ class BSController {
                                 ilike('matricule', "${filter.matricule}%")
                             }
                         }
+                        if(filter.site){
+                            agent{
+                                unite{
+                                    ilike('site', "${filter.site}%")
+                                }
+                            }
+                        }
                     }
                     switch (sortIndex){
                         case "unite":
