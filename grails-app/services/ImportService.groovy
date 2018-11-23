@@ -331,6 +331,7 @@ class ImportService {
                     if(testRequired(listDataCell, agent)){
                         def unite = Unite.findWhere(nom : map.unite)
                         agent.unite = unite ? unite : new Unite(nom : map.unite, importer : true).save()
+                        agent.gu = agent.unite?.gu?.first()
                         agent.dateEntree = map.dateEntree
                         agent.dateSortie = map.dateSortie
                         agent.libEmploi = map.libEmploi
@@ -339,7 +340,7 @@ class ImportService {
                         agent.dateDebutContrat = map.dateDebutContrat
                         agent.dateFinContrat = map.dateFinContrat
                         agent.genre = map.genre
-                        
+
                         def testDate = vmDateTestWacat027(agent)
                         if(testDate){
                             rapport.addToStack(testDate)
