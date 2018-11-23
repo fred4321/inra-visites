@@ -36,7 +36,7 @@ class MessageService {
         "<h3>Important :</h3>"+
         "<ul>"+
             "<li>Apporter un flacon d'urine, le carnet de santé ou de vaccination.</li>"+
-            "<li>Pensez à votre fiche liaison qui  est un outil indispensable pour que le médecin de prévention ait connaissance de vos expositions et puisse évaluer les risques potentiels pour votre santé.</br>Remplissez-la avec soin et n’oubliez pas de l’apporter au médecin de prévention au moment de la visite médicale.</li>"+
+            "<li>Pensez à votre fiche de prévention des expositions qui  est un outil indispensable pour que le médecin de prévention ait connaissance de vos expositions et puisse évaluer les risques potentiels pour votre santé.</br>Remplissez-la avec soin et n’oubliez pas de l’apporter au médecin de prévention au moment de la visite médicale.</li>"+
             "<li>Si vous venez de changer de poste de travail ou si vous êtes nouveau recruté(e), n’hésitez pas à contacter le secrétariat de votre unité pour en avoir un exemplaire ou bien vous pouvez aller la télécharger sur le site : <a href='https://intranet6.inra.fr/prevention/ACCES-PAR-THEME/Sante-au-travail'>https://intranet6.inra.fr/prevention/ACCES-PAR-THEME/Sante-au-travail</a></li>"+
             "<li>Si vous êtes convoqué(e) à une visite médicale de fin d'activité, préparer votre visite médicale en contactant votre chargé prévention d'unité qui vous guidera pour les documents à compléter (ex : attestation d'exposition,...) ; documents nécessaires pour le médecin afin d'optimiser la visite médicale.</li>"+
         "</ul></br>"+\
