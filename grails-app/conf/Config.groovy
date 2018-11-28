@@ -63,7 +63,7 @@ grails {
         port = 25
 //        username = "tbelutaud@novelios.com"
 //        password = "novelios00"
-        props = ["mail.smtp.starttls.enable":"true", 
+        props = ["mail.smtp.starttls.enable":"false",
                   "mail.smtp.port":"25"]
     }
 }
