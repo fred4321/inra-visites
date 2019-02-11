@@ -330,22 +330,24 @@ class ImportService {
                 if(testAgentRef(agent,map,listDataCell)){
                     if(testRequired(listDataCell, agent)){
                         def unite = Unite.findWhere(nom : map.unite)
-                        agent.unite = unite ? unite : new Unite(nom : map.unite, importer : true).save()
-                        agent.gu = agent.unite?.gu?.first()
-                        agent.dateEntree = map.dateEntree
-                        agent.dateSortie = map.dateSortie
-                        agent.libEmploi = map.libEmploi
-                        agent.positionAdm = map.positionAdm
-                        agent.dateNaissance = map.dateNaissance
-                        agent.dateDebutContrat = map.dateDebutContrat
-                        agent.dateFinContrat = map.dateFinContrat
-                        agent.genre = map.genre
+                        if(unite){
+                            agent.unite = unite
+                            agent.gu = agent.unite?.gu?.first()
+                            agent.dateEntree = map.dateEntree
+                            agent.dateSortie = map.dateSortie
+                            agent.libEmploi = map.libEmploi
+                            agent.positionAdm = map.positionAdm
+                            agent.dateNaissance = map.dateNaissance
+                            agent.dateDebutContrat = map.dateDebutContrat
+                            agent.dateFinContrat = map.dateFinContrat
+                            agent.genre = map.genre
 
-                        def testDate = vmDateTestWacat027(agent)
-                        if(testDate){
-                            rapport.addToStack(testDate)
+                            def testDate = vmDateTestWacat027(agent)
+                            if(testDate){
+                                rapport.addToStack(testDate)
+                            }
                         }
-                        if(agent.validate()) {
+                        if(agent.validate() && unite) {
                             agent.save(flush:true)
                             rapport.addToStack(new ImportStack(type : "agentUpdate", matricule : agent.matricule, nom :agent.nom, prenom:agent.prenom, row : it+1))
                         }else{
