@@ -332,7 +332,13 @@ class ImportService {
                         def unite = Unite.findWhere(nom : map.unite)
                         if(unite){
                             agent.unite = unite
-                            agent.gu = agent.unite?.gu?.first()
+                            if(!unite.gu.isEmpty()){
+                                if(unite.nom == "1348 PEGASE"){
+                                    agent.gu = agent.unite?.gu?.find{it.email == "guvmpegase@inra.fr"}
+                                }else{
+                                    agent.gu = agent.unite?.gu?.first()
+                                }
+                            }
                             agent.dateEntree = map.dateEntree
                             agent.dateSortie = map.dateSortie
                             agent.libEmploi = map.libEmploi
