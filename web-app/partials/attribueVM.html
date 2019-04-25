@@ -13,6 +13,8 @@
                     <td data-title="'Matricule'" filter="{'matricule':'text'}" sortable="'matricule'"><a class="openModal" ng-click="openAgent(creneau.idAgent)">{{creneau.matricule}}</a></td>
                     <td data-title="'Nom'" filter="{'nom':'text'}" sortable="'nom'">{{creneau.nom}}</td>
                     <td data-title="'Prénom'" filter="{'prenom':'text'}" sortable="'prenom'">{{creneau.prenom}}</td>
+                    <td data-title="'Date de Naissance'" filter="{'dateNaissance':'text'}" sortable="'dateNaissance'">{{creneau.dateNaissance|date}}</td>
+                    <td data-title="'INSEE'" filter="{'insee':'text'}" sortable="'insee'">{{creneau.insee}}</td>
                     <td data-title="'Unité'" filter="{'unite':'text'}" sortable="'unite'">{{creneau.unite}}</td>
                     <td data-title="'Nature de VM'" filter="{'natureVM':'text'}" sortable="'natureVM'">{{creneau.natureVM}}</td>
                     <td data-title="'@ de Convocation'" filter="{'dateConvoc':'text'}" sortable="'dateConvoc'">{{creneau.dateConvoc|date}}</td>

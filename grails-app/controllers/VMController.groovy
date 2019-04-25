@@ -65,7 +65,7 @@ class VMController {
                 //execution de la requette
                 def sql = new Sql(dataSource)
                 def requette = "SELECT v.id, creneau, v.statut, v.site, v.date, date_convoc AS dateConvoc, date_envois_courrier_agent AS dateEnvoisCourrierAgent,"+
-                    " v.naturevm AS natureVM, a.id as idAgent, a.nom, a.prenom, a.matricule, u.nom AS unite"+
+                    " v.naturevm AS natureVM, a.id as idAgent, a.nom, a.prenom, a.matricule, a.date_naissance as dateNaissance, a.insee, u.nom AS unite"+
                     " FROM vm as v"+
                     " LEFT JOIN agent AS a ON v.agent_id = a.id"+
                     (unite == "agent" ? " LEFT JOIN unite AS u ON u.id = a.unite_id " : " LEFT JOIN unite AS u ON u.id = v.unite_id ")+
