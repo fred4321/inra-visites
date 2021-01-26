@@ -33,12 +33,12 @@ class MessageService {
 
     def vmConvocation(VM vm) {
         return this.entete(vm.agent) +
-"""
-<p>Veuillez vous présenter le <b> ${vm.date.format('dd/MM/yyyy')} à ${vm.creneau}</b> à ${vm.lieu} pour une ${Params.findByValeur(vm.natureVM).info1}.</p>
-${grailsApplication.config.convocation}
-<p>${grailsApplication.config.signature}</p><br>
-<i>Pensez ENVIRONNEMENT : n'imprimez que si nécessaire</i>
-""".toString()
+        """
+        <p>Veuillez vous présenter le <b> ${vm.date.format('dd/MM/yyyy')} à ${vm.creneau}</b> à ${vm.lieu} pour une ${Params.findByValeur(vm.natureVM).info1}.</p>
+        ${grailsApplication.config.convocation}
+        <p>${grailsApplication.config.signature}</p><br>
+        <i>Pensez ENVIRONNEMENT : n'imprimez que si nécessaire</i>
+        """.toString()
     }
 
     def bsConvocation(BS bs) {
@@ -53,7 +53,6 @@ ${grailsApplication.config.convocation}
         "<b>Le "+bs.sDatePassage+" à "+bs.lieu+" entre "+ bs.heureDebut +" et "+ bs.heureFin +"</b></p></br>"+
         "<p>Cordialement.</p>"+
         "<p>${grailsApplication.config.signature}</p><br>"+
-        // Attention au service du personnel
         "<i>Pensez ENVIRONNEMENT : n'imprimez que si nécessaire</i>"
         return msg
     }
