@@ -124,9 +124,11 @@ environments {
         email_sender = "visites-medicales@toulouse.inrae.fr"
         signature = "Le service du personnel du Centre INRAE Occitanie-Toulouse"
 
-        grails.mail.host = "smtp-nonaut.inrae.fr"
-        grails.mail.port = 25
-        grails.mail.props = ["mail.smtp.starttls.enable":"false", "mail.smtp.port":"25"]
+        grails.mail.host = "smtp.inrae.fr"
+        grails.mail.username = "mmedtlse"
+        grails.mail.password = "b]Quec7u"
+        grails.mail.port = 587
+        grails.mail.props = ["mail.smtp.starttls.enable":"true", "mail.smtp.port":"587"]
     }
 
     production { // rennes
