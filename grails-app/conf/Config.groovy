@@ -121,7 +121,7 @@ environments {
         disable.auto.recompile = false
         grails.logging.jul.usebridge = true
 
-        email_sender = "visites-medicales@toulouse.inrae.fr"
+        email_sender = "medtlse.medtlse@inra.fr"
         convocation = """<p>Au cas où vous seriez dans l'impossibilité de vous rendre à cette convocation, merci d’informer l’Assistante du Médecin de Prévention par mail : medtlse-medtlse@inrae.fr</p>
         <h3>Important :</h3>
         <p>Merci de vous munir impérativement :</p>
