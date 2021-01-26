@@ -10,7 +10,7 @@
 
 angular.module('Configuration',[]).constant('CONST',{
     version:0.1,
-    title : 'INRA',
+    title : 'INRAE',
     baseUri:'/',
     templates:{
         action:'partials/components/actions.html',
