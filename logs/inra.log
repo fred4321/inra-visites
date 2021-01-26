@@ -2,3 +2,5 @@
 2018-04-04 14:46:03,210 [http-nio-8081-exec-5] INFO  controllers.UserController  - connection de : adminovelios
 2018-04-04 15:13:51,411 [http-nio-8081-exec-2] INFO  controllers.UserController  - connection de : adminovelios
 2018-04-10 15:13:19,365 [http-nio-8081-exec-8] INFO  controllers.UserController  - connection de : adminovelios
+2021-01-26 19:48:57,035 [http-bio-8080-exec-5] INFO  controllers.UserController  - connection de : adminovelios
+2021-01-26 19:49:09,246 [http-bio-8080-exec-6] INFO  controllers.PdfController  - impression de la vm 7975 pour adminovelios

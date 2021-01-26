@@ -43,6 +43,7 @@ angular.module('inra').factory('ListeEditModel', function() {
                     if (result.status === 200) {
                         listEdit.data[i] = result.data;
                     } else {
+                        console.log(result)
                         this.error();
                     }
                 });

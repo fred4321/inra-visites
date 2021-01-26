@@ -35,7 +35,7 @@ angular.module('Referentiel', []).
                         }
                     }, function (result) {
                         if (result.status === 409) {
-                            var txt = 'Erreur : des entités sont encore liès avec cette unité, veuillez les aaffécté à une autre unité avant de la supprimer \r\n';
+                            var txt = 'Erreur : des entités sont encore liées à cette unité, veuillez les affecter à une autre unité avant de la supprimer \r\n';
                             if (result.data.agents.length > 0) {
                                 txt = txt + 'Agents Liés: \r\n';
                                 for (var i in result.data.agents) {

@@ -19,26 +19,26 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop','update'
-            url = "jdbc:mysql://172.17.0.2/inra?autoReconnect=true"
+            url = "jdbc:mysql://127.0.0.1/inra?autoReconnect=true"
 			
             pooled=true
             driverClassName="com.mysql.jdbc.Driver"
             username="root"
-            password="novelios"
+            password="crer313225"
         }
     }
-    test {
+    test { // toulouse
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop','update'
-            url = "jdbc:mysql://localhost/inra?autoReconnect=true"
+            url = "jdbc:mysql://127.0.0.1/inra?autoReconnect=true"
 			
             pooled=true
             driverClassName="com.mysql.jdbc.Driver"
-            username="inra"
-            password="inra313225"
+            username="root"
+            password="crer313225"
         }
     }
-    production {
+    production { // rennes
         dataSource {
             dbCreate = "update"
             url = "jdbc:mysql://localhost/inra?autoReconnect=true"

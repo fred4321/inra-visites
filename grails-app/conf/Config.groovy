@@ -11,7 +11,6 @@
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 
-
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 
 // The ACCEPT header will not be used for content negotiation for user agents containing the following strings (defaults to the 4 major rendering engines)
@@ -22,13 +21,13 @@ grails.mime.types = [ // the first one is the default format
     css:           'text/css',
     csv:           'text/csv',
     form:          'application/x-www-form-urlencoded',
-    html:          ['text/html','application/xhtml+xml'],
+    html:          ['text/html', 'application/xhtml+xml'],
     js:            'text/javascript',
     json:          ['application/json', 'text/json'],
     multipartForm: 'multipart/form-data',
     rss:           'application/rss+xml',
     text:          'text/plain',
-    hal:           ['application/hal+json','application/hal+xml'],
+    hal:           ['application/hal+json', 'application/hal+xml'],
     xml:           ['text/xml', 'application/xml']
 ]
 
@@ -55,17 +54,27 @@ grails {
                 staticparts = 'none' // escapes output from static template parts
             }
         }
-        // escapes all not-encoded output at final stage of outputting
-        // filteringCodecForContentType.'text/html' = 'html'
+    // escapes all not-encoded output at final stage of outputting
+    // filteringCodecForContentType.'text/html' = 'html'
     }
+
+    /*
+    // TOULOUSE
     mail {
-        host = "smtp.rennes.inra.fr"
-        port = 25
-//        username = "tbelutaud@novelios.com"
-//        password = "novelios00"
-        props = ["mail.smtp.starttls.enable":"false",
-                  "mail.smtp.port":"25"]
+        host = "smtp.inrae.fr"
+        port = 587
+        username = "mmedtlse"
+        password = "b]Quec7u"
+        props = ["mail.smtp.starttls.enable":"true",  "mail.smtp.port":"587"]
     }
+    */
+
+// RENNES
+// mail {
+//     host = "smtp-nonaut.inrae.fr"
+//     port = 25
+//     props = ["mail.smtp.starttls.enable":"false", "mail.smtp.port":"25"]
+// }
 }
 
 grails.gorm.autoFlush = true
@@ -81,7 +90,7 @@ grails.enable.native2ascii = true
 // packages to include in Spring bean scanning
 grails.spring.bean.packages = []
 // whether to disable processing of multi part requests
-grails.web.disable.multipart=false
+grails.web.disable.multipart = false
 
 // request parameters to mask when logging exceptions
 grails.exceptionresolver.params.exclude = ['password']
@@ -97,19 +106,44 @@ grails.hibernate.osiv.readonly = false
 
 environments {
     development {
-        disable.auto.recompile=false
+        disable.auto.recompile = false
         grails.logging.jul.usebridge = true
+
+        email_sender = "visites-medicales@rennes.inrae.fr"
+        signature = "Le service du personnel du Centre INRAE Bretagne-Basse Normandie"
+        grails.mail.host = "smtp.inrae.fr"
+        grails.mail.port = 587
+        grails.mail.username = "mmedtlse"
+        grails.mail.password = "b]Quec7u"
+        grails.mail.props = ["mail.smtp.starttls.enable":"true",  "mail.smtp.port":"587"]
     }
-    production {
-        disable.auto.recompile=false
-        grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
+
+    test { // toulouse
+        disable.auto.recompile = false
+        grails.logging.jul.usebridge = true
+        email_sender = "visites-medicales@toulouse.inrae.fr"
+        signature = "Le service du personnel du Centre INRAE Occitanie-Toulouse"
+        ggrails.mail.host = "smtp-nonaut.inrae.fr"
+        grails.mail.port = 25
+        grails.mail.props = ["mail.smtp.starttls.enable":"false", "mail.smtp.port":"25"]
+    }
+
+    production { // rennes
+        disable.auto.recompile = false
+        grails.logging.jul.usebridge = true
+
+        email_sender = "visites-medicales@rennes.inrae.fr"
+        signature = "Le service du personnel du Centre INRAE Bretagne-Basse Normandie"
+        grails.mail.host = "smtp.inrae.fr"
+        grails.mail.port = 587
+        grails.mail.username = "mmedtlse"
+        grails.mail.password = "b]Quec7u"
+        grails.mail.props = ["mail.smtp.starttls.enable":"true",  "mail.smtp.port":"587"]
     }
 }
 
 // log4j configuration
 log4j.main = {
-    
     appenders {
         rollingFile name: "inra",
         maxFileSize: 1024,
@@ -127,7 +161,7 @@ log4j.main = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
-    
+
     info inra : "grails.app"
 }
 
@@ -144,4 +178,3 @@ jasypt {
     password = "drUwR2nuphepwAustuRAchUb87xUZACEspe_Af"
     keyObtentionIterations = 1000
 }
-

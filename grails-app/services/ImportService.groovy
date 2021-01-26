@@ -145,7 +145,7 @@ class ImportService {
             return cell.getCellType() == XSSFCell.CELL_TYPE_NUMERIC || cell.getCellType() == XSSFCell.CELL_TYPE_FORMULA
             break;
         case "courriel":
-            return cell ==~/.*@.*/
+            return cell ==~/^[^\W][a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/
             break;
         case "insee":
             return (cell.getCellType() ==  XSSFCell.CELL_TYPE_STRING)
@@ -330,30 +330,21 @@ class ImportService {
                 if(testAgentRef(agent,map,listDataCell)){
                     if(testRequired(listDataCell, agent)){
                         def unite = Unite.findWhere(nom : map.unite)
-                        if(unite){
-                            agent.unite = unite
-                            if(!unite.gu.isEmpty()){
-                                if(unite.nom == "1348 PEGASE"){
-                                    agent.gu = agent.unite?.gu?.find{it.email == "guvmpegase@inra.fr"}
-                                }else{
-                                    agent.gu = agent.unite?.gu?.first()
-                                }
-                            }
-                            agent.dateEntree = map.dateEntree
-                            agent.dateSortie = map.dateSortie
-                            agent.libEmploi = map.libEmploi
-                            agent.positionAdm = map.positionAdm
-                            agent.dateNaissance = map.dateNaissance
-                            agent.dateDebutContrat = map.dateDebutContrat
-                            agent.dateFinContrat = map.dateFinContrat
-                            agent.genre = map.genre
-
-                            def testDate = vmDateTestWacat027(agent)
-                            if(testDate){
-                                rapport.addToStack(testDate)
-                            }
+                        agent.unite = unite ? unite : new Unite(nom : map.unite, importer : true).save()
+                        agent.dateEntree = map.dateEntree
+                        agent.dateSortie = map.dateSortie
+                        agent.libEmploi = map.libEmploi
+                        agent.positionAdm = map.positionAdm
+                        agent.dateNaissance = map.dateNaissance
+                        agent.dateDebutContrat = map.dateDebutContrat
+                        agent.dateFinContrat = map.dateFinContrat
+                        agent.genre = map.genre
+                        
+                        def testDate = vmDateTestWacat027(agent)
+                        if(testDate){
+                            rapport.addToStack(testDate)
                         }
-                        if(agent.validate() && unite) {
+                        if(agent.validate()) {
                             agent.save(flush:true)
                             rapport.addToStack(new ImportStack(type : "agentUpdate", matricule : agent.matricule, nom :agent.nom, prenom:agent.prenom, row : it+1))
                         }else{

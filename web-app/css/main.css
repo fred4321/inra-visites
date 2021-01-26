@@ -70,7 +70,7 @@ body td, body div, body span, body span {
 
 body h1, body h2, body h3, body h4, body h5, body h6{
     font-weight: bold;
-    color: #78a12f;
+    color: #00a3a6;
     text-transform: uppercase;
     margin: 5px 0;
 }
@@ -215,13 +215,13 @@ body .nav-tabs a{
 }
 
 .block-pagination .pagination>li.active a{
-    background-color: #78a12f;
-    border-color: #78a12f;
+    background-color: #00a3a6;
+    border-color: #00a3a6;
     color:#ffffff;
 }
 
 .block-pagination .pagination>li>a{
-    color: #78a12f;
+    color: #00a3a6;
     padding: 1px 5px;
 }
 
@@ -271,7 +271,7 @@ table td select.bg-warning{
 }
 
 .openModal{
-    color: #78a12f;
+    color: #00a3a6;
     cursor: pointer;
 }
 
@@ -335,7 +335,7 @@ table td select.bg-warning{
 }
 
 #verificationModal .panel-title{
-    color:#78a12f;
+    color:#00a3a6;
 }
 
 #verificationModal .panel-title span{
@@ -410,7 +410,7 @@ table td select.bg-warning{
 .loading {
     font-size: 25px;
     left: 30px;
-    color: #78a12f;
+    color: #00a3a6;
     position: fixed;
     top: 15px;
 }

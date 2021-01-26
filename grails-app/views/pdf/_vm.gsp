@@ -26,7 +26,7 @@
         <title>Fiche de visite médical</title>
     </head>
     <body>
-        <img src="${ pdf ? "web-app" : "" }/img/logo-INRA-transp-small.png" alt="logo INRA" style="width:3.5cm;height:1.4cm;float:right;"/>
+        <img src="${ pdf ? "web-app" : "" }/img/logo-INRA-transp-small.png" alt="logo INRA" style="width:3.5cm;float:right;"/>
         <h2 style="padding-top: 1cm;">
             Visite médicale N° ${vm.id}
         </h2>
@@ -42,7 +42,7 @@
             </tr>
             <tr>
                 <td><b>Unité : </b>${vm.uniteAgent}</td>
-                <td>Né(e) le : <g:formatDate format="dd MMM yyyy" date="${vm.sDateNaissance}"/></td>                
+                <td>Né(e) le : <g:formatDate format="dd MMM yyyy" date="${vm.dateNaissance}"/></td>                
             </tr>
             <tr>
                 <td>Site : ${vm.site}</td>

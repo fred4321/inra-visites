@@ -252,16 +252,19 @@ class AgentController {
         return [status : 200];
     }
     
-    def correctifBase = {               //correctif de base de donnée
-        println "run patch"
-        def listeAgents = Agent.getAll()
-        listeAgents.each(){
-            println it.id + " : " + it.matricule
-            it.dateDerniereVM = it.vm ? it.vm[0].date : null
-            it.save(flush:true)
-        }
-        return [status : 200];
-    }
+//    def CorrectifBase(){//correctif de base de donnée
+//        println "run patch"
+//        def listeAgents = Agent.getAll()
+//        listeAgents.each(){
+//            println it.id
+//            it.dateDerniereVM = it.vm ? it.vm[0].date : null
+//            it.prenom = it.prenom.toLowerCase().capitalize()
+//            it.natureVM = "VPA"
+//            it.periodicite = "2 ans"
+//            it.save(flush:true)
+//        }
+//        return [status : 200];
+//    }
     
     
 }

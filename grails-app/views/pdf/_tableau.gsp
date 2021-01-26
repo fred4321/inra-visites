@@ -26,7 +26,7 @@
         <title>${title}</title>
     </head>
     <body>
-        <img src="web-app/img/logo-INRA-transp-small.png" alt="logo INRA" style="width:3cm;height:1.6cm;float:right;"/>
+        <img src="web-app/img/logo-INRA-transp-small.png" alt="logo INRA" style="width:3cm;float:right;"/>
         <table>
             <tr>
                 <g:each in="${titles}" var="t" >

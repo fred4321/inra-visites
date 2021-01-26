@@ -22,7 +22,7 @@
         <title>Fiche de bilan sanguin</title>
     </head>
     <body>
-        <img src="web-app/img/logo-INRA-transp-small.png" alt="logo INRA" style="width:3.5cm;height:1.4cm;float:right;"/>
+        <img src="web-app/img/logo-INRA-transp-small.png" alt="logo INRA" style="width:3.5cm;float:right;"/>
         <h2 style="border-bottom: #333333;border-bottom-style: solid;border-bottom-width: 0.1mm;padding-top: 1cm;">
             Bilan sanguin N° ${bs.id}
         </h2>

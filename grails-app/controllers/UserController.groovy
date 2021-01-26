@@ -130,7 +130,7 @@ class UserController {
         }
         return [ status : 401 ]
     }
-	
+    
     def login = {
         def data = request.JSON
         def user = User.findByIdentifiant(data.identifiant)
@@ -146,7 +146,7 @@ class UserController {
         }
         return [status : 204]
     }
-	
+    
     def logout = {
         log.info("deconnexion de : "+session.user?.identifiant)
         session.invalidate()

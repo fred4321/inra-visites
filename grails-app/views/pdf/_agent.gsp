@@ -22,7 +22,7 @@
         <title>fiche Agent n° ${agent.id}</title>
     </head>
     <body>
-        <img src="web-app/img/logo-INRA-transp-small.png" alt="logo INRA" style="width:3.5cm;height:1.4cm;float:right;"/>
+        <img src="web-app/img/logo-INRA-transp-small.png" alt="logo INRA" style="width:3.5cm;float:right;"/>
         <h2 style="border-bottom: #333333;border-bottom-style: solid;border-bottom-width: 0.1mm;padding-top: 1cm;">
             FICHE AGENT
         </h2>
@@ -54,7 +54,7 @@
             </tr>
             <tr>
                 <td><b>Périodicité : </b>${agent.periodicite}</td>
-                <td><b>Dernière VM : </b><g:formatDate format="dd MMM yyyy" date="${agent.dateDerniereVM}"/></td>
+                <td><b>Dernière VM : </b>todo</td>
                 <td><b>Mail : </b>${agent.courriel}</td>
             </tr>
             <tr>
