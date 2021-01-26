@@ -27,7 +27,7 @@ class VMController {
 
     def testmail() {
         println grailsApplication.config.grails.mail.host
-        messageService.send([message:"test", subject:"sujet", from:"visites-medicales@rennes.inrae.fr", to:["f.fanien@gmail.com"] ])
+        messageService.send([message:grailsApplication.config.convocation, subject:"sujet", from:"visites-medicales@rennes.inrae.frt", to:["f.fanien@gmail.com"] ])
         println "OK"
         return [status : 200, data : [ok: true]]
     }
