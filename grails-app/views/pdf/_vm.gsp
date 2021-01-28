@@ -38,15 +38,15 @@
             </tr>
             <tr>
                 <td><b>Nom : </b>${vm.nom} ${vm.prenom}</td>
-                <td>Médecin : ${vm.refMedecin}</td>
-            </tr>
-            <tr>
-                <td><b>Unité : </b>${vm.uniteAgent}</td>
                 <td>Né(e) le : <g:formatDate format="dd MMM yyyy" date="${vm.dateNaissance}"/></td>                
             </tr>
             <tr>
-                <td>Site : ${vm.site}</td>
+                <td><b>Unité : </b>${vm.uniteAgent}</td>
                 <td>Emploi : ${vm.libEmploi}</td>
+            </tr>
+            <tr>
+                <td>Site : ${vm.site}</td>
+                <td>Médecin : ${vm.refMedecin}</td>
             </tr>
             <tr>
                 <td colspan="2">Arrêt : <g:formatDate format="dd MMM yyyy" date="${vm.dateArretTravail}"/></td>

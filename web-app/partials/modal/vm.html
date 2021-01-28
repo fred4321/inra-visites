@@ -24,46 +24,61 @@
                         <h4>Agent : {{vm.matricule}}</h4>
                     </div>
                     <div class="panel-body">
-                        <div class="col-sm-6">
-                            <label class="col-sm-3 control-label text-right">Date de VM:</label>
-                            <span class="col-sm-9">{{vm.date|date}}</span>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="col-sm-4 control-label text-right">Date de VM:</label>
+                                <span class="col-sm-8 row">{{vm.date|date}}</span>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="col-sm-4 control-label text-right">Statut:</label>
+                                <span class="col-sm-8 row">{{vm.statut}}</span>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <label class="col-sm-3 control-label text-right">Statut:</label>
-                            <span class="col-sm-9">{{vm.statut}}</span>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="col-sm-4 control-label text-right">Nom:</label>
+                                <span class="col-sm-8 row">{{vm.nom}} {{vm.prenom}}</span>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="col-sm-4 control-label text-right">Né(e) le:</label>
+                                <span class="col-sm-8 row">{{vm.dateNaissance| date}}</span>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <label class="col-sm-3 control-label text-right">Nom:</label>
-                            <span class="col-sm-9">{{vm.nom}} {{vm.prenom}}</span>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="col-sm-4 control-label text-right">Unité:</label>
+                                <span class="col-sm-8 row">{{vm.uniteAgent}}</span>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="col-sm-4 control-label text-right">Emploi:</label>
+                                <span class="col-sm-8 row">{{vm.libEmploi}}</span>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <label class="col-sm-3 control-label text-right">Médecin:</label>
-                            <span ng-if="!medecin" class="col-sm-9">{{vm.refMedecin}}</span>
-                            <select class="col-sm-9" ng-if="medecin" ng-model="vm.refMedecin" ng-options="medecin for medecin in medecins"></select>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="col-sm-4 control-label text-right">Site:</label>
+                                <span class="col-sm-8 row">{{vm.site}}</span>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="col-sm-4 control-label text-right">Médecin:</label>
+                                <span ng-if="!medecin" class="col-sm-8 row">{{vm.refMedecin}}</span>
+                                <select class="col-sm-8 row" ng-if="medecin" ng-model="vm.refMedecin" ng-options="medecin for medecin in medecins"></select>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <label class="col-sm-3 control-label text-right">Unité:</label>
-                            <span class="col-sm-9">{{vm.uniteAgent}}</span>
-                        </div>
-                        <div class="col-sm-6">
-                            <label class="col-sm-3 control-label text-right">Né(e) le:</label>
-                            <span class="col-sm-9">{{vm.dateNaissance| date}}</span>
-                        </div>
-                        <div class="col-sm-6">
-                            <label class="col-sm-3 control-label text-right">Site:</label>
-                            <span class="col-sm-9">{{vm.site}}</span>
-                        </div>
-                        <div class="col-sm-6">
-                            <label class="col-sm-3 control-label text-right">Emploi:</label>
-                            <span class="col-sm-9">{{vm.libEmploi}}</span>
-                        </div>
-                        <div class="col-sm-6">
-                            <label class="col-sm-3 control-label text-right">Lieu:</label>
-                            <span class="col-sm-9">{{vm.lieu}}</span>
-                        </div>
-                        <div class="col-sm-12">
-                            <label class="col-sm-3 control-label text-right">Fin d'arrêt de travail:</label>
-                            <span class="col-sm-9">{{vm.dateArretTravail| date}}</span>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="col-sm-4 control-label text-right">Lieu:</label>
+                                <span class="col-sm-8 row">{{vm.lieu}}</span>
+                            </div>
+                        
+                            <div class="col-sm-6">
+                                <label class="col-sm-4 control-label text-right">Fin d'arr. travail:</label>
+                                <span class="col-sm-8">{{vm.dateArretTravail| date}}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
