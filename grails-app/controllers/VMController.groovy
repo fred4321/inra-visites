@@ -67,15 +67,14 @@ class VMController {
                 (filter.nom ? " AND a.nom LIKE '${filter.nom}%'" : "")+
                 (filter.prenom ? " AND a.prenom LIKE '${filter.prenom}%'" : "" )+
                 (filter.matricule ? " AND a.matricule LIKE '${filter.matricule}%'" : "" )+
-                (filter.periodicite ? " AND a.periodicite LIKE '${filter.periodicite}%'" : "")+
-                (filter.libEmploi ? " AND a.libEmploi LIKE '${filter.libEmploi}%'" : "" )
+                (filter.periodicite ? " AND a.periodicite LIKE '${filter.periodicite}%'" : "")
                 //trie
                 def order = " ORDER by ${sortIndex} ${sortOrder}"
                 //execution de la requette
                 def sql = new Sql(dataSource)
                 def requette = "SELECT v.id, creneau, v.statut, v.site, v.date, date_convoc AS dateConvoc, date_envois_courrier_agent AS dateEnvoisCourrierAgent," +
                     //" v.naturevm AS natureVM, a.id as idAgent, a.nom, a.prenom, a.matricule, u.nom AS unite"+
-                    " v.naturevm AS natureVM, a.id as idAgent, a.nom, a.prenom, a.matricule, a.libEmploi as libEmploi, a.date_naissance as dateNaissance, a.insee, u.nom AS unite"+
+                    " v.naturevm AS natureVM, a.id as idAgent, a.nom, a.prenom, a.matricule, a.date_naissance as dateNaissance, a.insee, u.nom AS unite"+
 
                     " FROM vm as v"+
                     " LEFT JOIN agent AS a ON v.agent_id = a.id"+
