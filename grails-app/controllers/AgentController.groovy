@@ -34,11 +34,11 @@ class AgentController {
                 def where = " where 0=0"+
                 (params.prioritaireVM ? " AND a.prioritaireVM = true" : "")+
                 (params.inactif ? " AND (a.date_arret_travail IS NULL OR a.date_arret_travail < NOW())" : "" )+
-                (filter.nom ? " AND a.nom LIKE '${filter.nom}%'" : "" )+
-                (filter.prenom ? " AND a.prenom LIKE '${filter.prenom}%'" : "" )+
-                (filter.matricule ? " AND a.matricule LIKE '${filter.matricule}%'" : "" )+
-                (filter.insee ? " AND a.insee LIKE '${filter.insee}%'" : "" )+
-                (filter.site ? " AND a.site LIKE '${filter.site}%'" : "" )+
+                (filter.nom ? " AND a.nom LIKE '%${filter.nom}%'" : "" )+
+                (filter.prenom ? " AND a.prenom LIKE '%${filter.prenom}%'" : "" )+
+                (filter.matricule ? " AND a.matricule LIKE '%${filter.matricule}%'" : "" )+
+                (filter.insee ? " AND a.insee LIKE '%${filter.insee}%'" : "" )+
+                (filter.site ? " AND a.site LIKE '%${filter.site}%'" : "" )+
                 (filter.periodicite ? " AND a.periodicite LIKE '%${filter.periodicite}%'" : "" )+
                 (params.archive ? " AND a.archive = " + (params.archive == "true" ? 1 : 0) : "" )+
                 (params.archivage == "true" || filter.dateSortie ? " AND a.date_sortie IS NOT NULL" : "" )+

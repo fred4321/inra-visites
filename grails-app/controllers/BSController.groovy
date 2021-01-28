@@ -34,10 +34,10 @@ class BSController {
                         eq('id', Long.valueOf(filter.id))
                     }
                     if (filter.lieu) {
-                        ilike('lieu', "${filter.lieu}%")
+                        ilike('lieu', "%${filter.lieu}%")
                     }
                     if (filter.type) {
-                        ilike('type', "${filter.type}%")
+                        ilike('type', "%${filter.type}%")
                     }
                     if (filter.datePrescription) {
                         ilike('sDatePrescription', "%${filter.datePrescription}%")
@@ -67,17 +67,17 @@ class BSController {
 
                         if(filter.nom) {
                             agent {
-                                ilike('nom', "${filter.nom}%")
+                                ilike('nom', "%${filter.nom}%")
                             }
                         }
                         if(filter.prenom) {
                             agent {
-                                ilike('prenom', "${filter.prenom}%")
+                                ilike('prenom', "%${filter.prenom}%")
                             }
                         }
                         if(filter.matricule) {
                             agent {
-                                ilike('matricule', "${filter.matricule}%")
+                                ilike('matricule', "%${filter.matricule}%")
                             }
                         }
                     }

@@ -54,21 +54,21 @@ class VMController {
                 //condition
                 def where = " WHERE 0=0" +
                 (params.statut == 'affecté-convoqué' ? " AND a.archive = false" : "")+
-                (filter.statut ? " AND v.statut LIKE '${filter.statut}%'" : "")+
+                (filter.statut ? " AND v.statut LIKE '%${filter.statut}%'" : "")+
                 (params.statut ? " AND ( v.statut = '" + params.statut.replaceAll("-", "' OR v.statut = '") + "')" : "")+
                 (filter.id ? " AND v.id = " + Long.parseLong(filter.id) : "" )+
-                (filter.natureVM ? " AND v.naturevm LIKE '${filter.natureVM}%'" : "" )+
+                (filter.natureVM ? " AND v.naturevm LIKE '%${filter.natureVM}%'" : "" )+
                 (filter.creneau ? " AND v.creneau LIKE '%${filter.creneau}%'" : "")+
-                (filter.lieu ? " AND v.lieu LIKE '${filter.lieu}%'" : "" )+
-                (filter.site ? " AND v.site LIKE '${filter.site}%'" : "" )+
+                (filter.lieu ? " AND v.lieu LIKE '%${filter.lieu}%'" : "" )+
+                (filter.site ? " AND v.site LIKE '%${filter.site}%'" : "" )+
                 (filter.dateConvoc ? " AND v.s_date_convoc LIKE '%${filter.dateConvoc}%'" : "" )+
                 (filter.date ? " AND v.s_date LIKE '%${filter.date}%'" : "" )+
-                (filter.unite || session.user.profil == "GU" ? " AND u.nom LIKE '${ session.user.profil == "GU" ? session.user.unite.nom : filter.unite }%'" : "" )+
-                (filter.nom ? " AND a.nom LIKE '${filter.nom}%'" : "")+
-                (filter.prenom ? " AND a.prenom LIKE '${filter.prenom}%'" : "" )+
-                (filter.matricule ? " AND a.matricule LIKE '${filter.matricule}%'" : "" )+
-                (filter.periodicite ? " AND a.periodicite LIKE '${filter.periodicite}%'" : "")+
-                (filter.libEmploi ? " AND a.libEmploi LIKE '${filter.libEmploi}%'" : "" )
+                (filter.unite || session.user.profil == "GU" ? " AND u.nom LIKE '%${ session.user.profil == "GU" ? session.user.unite.nom : filter.unite }%'" : "" )+
+                (filter.nom ? " AND a.nom LIKE '%${filter.nom}%'" : "")+
+                (filter.prenom ? " AND a.prenom LIKE '%${filter.prenom}%'" : "" )+
+                (filter.matricule ? " AND a.matricule LIKE '%${filter.matricule}%'" : "" )+
+                (filter.periodicite ? " AND a.periodicite LIKE '%${filter.periodicite}%'" : "")+
+                (filter.libEmploi ? " AND a.lib_emploi LIKE '%${filter.libEmploi}%'" : "" )
                 //trie
                 def order = " ORDER by ${sortIndex} ${sortOrder}"
                 //execution de la requette
