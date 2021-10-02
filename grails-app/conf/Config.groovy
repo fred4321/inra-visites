@@ -133,7 +133,6 @@ environments {
             <li>Du carnet de santé ou de vaccinations.</li>
             <li>De vos lunettes.</li>
           </ul>
-          <p>En cas de première visite en vue de la manipulation de radioéléments, merci d’amener une photo d’identité et votre numéro de sécurité sociale.</p>
         <p>Cordialement.</p>"""
         signature = "Le service de santé au travail"
 
