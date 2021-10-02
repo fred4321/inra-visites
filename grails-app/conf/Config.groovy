@@ -135,7 +135,7 @@ environments {
           </ul>
           <p>En cas de première visite en vue de la manipulation de radioéléments, merci d’amener une photo d’identité et votre numéro de sécurité sociale.</p>
         <p>Cordialement.</p>"""
-        signature = "Le service du personnel du Centre INRAE Occitanie-Toulouse"
+        signature = "Le service de santé au travail"
 
         grails.mail.host = "smtp.inrae.fr"
         grails.mail.username = "mmedtlse"
