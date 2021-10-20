@@ -2,7 +2,7 @@
     <div class="modal-header">
         <div class="row">
             <div class="col-lg-3">
-                <img src="img/logo-INRA-transp-small.png" alt="logo INRA" >
+                <img src="img/logo-INRA-transp-small.png" alt="logo INRA">
             </div>
             <div class="col-lg-6">
                 <h3 class="modal-title">Fiche de visite médicale N° : {{vm.id}}</h3>
@@ -74,7 +74,7 @@
                                 <label class="col-sm-4 control-label text-right">Lieu:</label>
                                 <span class="col-sm-8 row">{{vm.lieu}}</span>
                             </div>
-                        
+
                             <div class="col-sm-6">
                                 <label class="col-sm-4 control-label text-right">Fin d'arr. travail:</label>
                                 <span class="col-sm-8">{{vm.dateArretTravail| date}}</span>
@@ -94,7 +94,8 @@
                                 <form class="form-inline" role="form">
                                     <div class="form-group">
                                         <label class="control-label">Nature :</label>
-                                        <select class="form-control input-xs" ng-disabled="!medecin" ng-model="vm.natureVM" ng-options="nature for nature in natures"></select>
+                                        <select class="form-control input-xs" ng-disabled="!medecin" ng-model="vm.natureVM"
+                                            ng-options="nature.value as nature.text for nature in natures"></select>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Autre :</label>
@@ -113,9 +114,9 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>APTE</label>
-                                    <div class="radio radio-inline" ng-class="{desactive:(!medecin)}">
+                                    <div class="radio radio-inline" ng-class="{desactive:(!medecin)}" style="margin-top:0">
                                         <label ng-class="{desactive:(!medecin)}">
-                                            <input type="radio" ng-model="vm.apte" name="avis" value="oui" ng-disabled="!medecin">
+                                            <input type="radio" name="avis" ng-model="vm.apte" value="oui" ng-disabled="!medecin">
                                             OUI
                                         </label>
                                         <label ng-class="{desactive:(!medecin)}">
@@ -127,6 +128,29 @@
                                             Inapte temporairement
                                         </label>
                                     </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Vu</label>
+                                    <div class="radio radio-inline" ng-class="{desactive:(!medecin)}" style="margin-top:0">
+                                        <label ng-class="{desactive:(!medecin)}">
+                                            <input type="radio" ng-model="vm.vu" name="vu" value="présentiel" ng-disabled="!medecin">
+                                            en présentiel
+                                        </label>
+                                        &nbsp;&nbsp;
+                                        <label ng-class="{desactive:(!medecin)}">
+                                            <input type="radio" ng-model="vm.vu" name="vu" value="téléconsultation" ng-disabled="!medecin">
+                                            en téléconsultation
+                                        </label>
+                                    </div>
+
+
+                                    <span style="margin-left:10px;">
+                                        par
+                                        <select ng-if="medecin" ng-model="vm.vuPar" ng-options="vuPar for vuPar in vusPar"></select>
+                                    </span>
+
+
                                 </div>
                             </div>
                         </div>
@@ -143,7 +167,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <remarques title="autres conclusions" ref="vm.id" type="Conclusion"  edit="medecin" data="vm.conclusions"></remarques>
+                            <remarques title="autres conclusions" ref="vm.id" type="Conclusion" edit="medecin" data="vm.conclusions"></remarques>
                         </div>
                     </div>
                 </div>
@@ -199,6 +223,7 @@
                             <label class="col-sm-6 control-label text-right">Courriel Agent :</label>
                             <span class="col-sm-6">{{vm.dateEnvoisCourrierAgent|date}}</span>
                         </div>
+
                         <div class="col-sm-6">
                             <label class="col-sm-6 control-label text-right">Fiche modifiée le: :</label>
                             <span class="col-sm-6">{{vm.modification|date}}</span>
@@ -215,14 +240,47 @@
                             <label class="col-sm-6 control-label text-right">Courriel DU + RRH :</label>
                             <span class="col-sm-6">{{vm.dateEnvoisCourrierDURRH|date}}</span>
                         </div>
+
+
+
+
+                        <div class="col-sm-12" style="margin-top:10px;">
+                            <label class="col-sm-3 control-label text-right">À revoir avant le </label>
+
+                            <div class="col-sm-2">
+                                <span ng-click="medecin && calendrierDerniereVm.open($event)" name="dateProchaineVm" id="dateProchaineVm"
+                                    class="form-control input-xs" datepicker-popup="{{calendrierDerniereVm.format}}" is-open="calendrierDerniereVm.opened"
+                                    close-text="Fermer" show-button-bar="false" ng-model="vm.dateProchaineVm" value="vm.dateProchaineVm">{{vm.dateProchaineVm|
+                                    date}}</span>
+                            </div>
+                            <label ng-class="{desactive:(!medecin)}">
+                                <input type="radio" ng-model="vm.vuProchaineVm" name="vuProchaineVm" value="présentiel" ng-disabled="!medecin">
+                                en présentiel
+                            </label>
+                            &nbsp;&nbsp;
+                            <label ng-class="{desactive:(!medecin)}">
+                                <input type="radio" ng-model="vm.vuProchaineVm" name="vuProchaineVm" value="téléconsultation" ng-disabled="!medecin">
+                                en téléconsultation
+                            </label>
+
+                            <span style="margin-left:10px;">
+                                par
+                                <select ng-if="medecin" ng-model="vm.vuParProchaineVm" ng-options="vuPar for vuPar in vusPar"></select>
+                            </span>
+
+
+
+                        </div>
+
                     </div>
+
                 </div>
             </div>
         </div>
         <div class="row">
-        <div class="col-lg-12">
-            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-        </div>
+            <div class="col-lg-12">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+            </div>
         </div>
     </div>
     <div class="modal-footer">

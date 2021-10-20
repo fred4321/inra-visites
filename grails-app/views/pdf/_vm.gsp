@@ -1,3 +1,7 @@
+<%
+    def nature = Params.findWhere(groupe:"natureVM", valeur : vm.natureVM)
+    def nature_text = nature ? nature.info1 : vm.natureVM
+%>
 <%@page defaultCodec="none" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
@@ -12,6 +16,9 @@
             page-break-before:always;
             }
 
+            table {
+                width:100%;
+            }
             .spacer {
             float:left;
             width:2mm;
@@ -22,13 +29,25 @@
             h1,h2,h3,h4,h5,h6{
                 text-transform: uppercase;
             }
+            h2 {font-size: 18px;}
+
+            div.checkbox {
+                width: 16px; height: 16px; border:1px solid #999;
+                display:block;
+                text-align: center;
+                float:left;
+                margin: 0 8px 0 15px;
+            }
         </style>
-        <title>Fiche de visite médical</title>
+        <title>Fiche de visite médicale</title>
     </head>
     <body>
-        <img src="${ pdf ? "web-app" : "" }/img/logo-INRA-transp-small.png" alt="logo INRA" style="width:3.5cm;float:right;"/>
-        <h2 style="padding-top: 1cm;">
-            Visite médicale N° ${vm.id}
+        <div>
+            <img src="${ pdf ? "web-app" : "" }/img/republique-francaise.png" alt="logo INRA" style="width:2cm;"/>
+            <img src="${ pdf ? "web-app" : "" }/img/logo-INRA-transp-small.png" alt="logo INRA" style="width:3.5cm;float:right;"/>
+        </div>
+        <h2 xxstyle="padding-top: 1cm;">
+            Fiche de visite de médecine de prévention n° ${vm.id}
         </h2>
         <table>
             <tr><td colspan="2" style="border-top: #333333;border-top-style: solid;border-top-width: 0.1mm;"><h4>AGENT N° ${vm.matricule}</h4></td></tr>
@@ -46,7 +65,7 @@
             </tr>
             <tr>
                 <td>Site : ${vm.site}</td>
-                <td>Médecin : ${vm.refMedecin}</td>
+                <td>Médecin : ${vm.refMedecin }</td>
             </tr>
             <tr>
                 <td colspan="2">Arrêt : <g:formatDate format="dd MMM yyyy" date="${vm.dateArretTravail}"/></td>
@@ -54,10 +73,21 @@
             <tr>
                 <td colspan="2" style="border-top: #333333;border-top-style: solid;border-top-width: 0.1mm;"><h4>AVIS</h4></td>
             </tr>
+            
+            <tr>
+                <td colspan="2" style="padding-bottom:10px;">
+                    <span style="float:left"><b>Vu en </b> </span>                  
+                    <div class="checkbox">${vm.vu=='présentiel' ? 'X' : ''}</div> <span style="float:left">en présentiel</span>
+                    <div class="checkbox">${vm.vu=='téléconsultation' ? 'X' : ''}</div> <span style="float:left;">en téléconsultation</span>
+                    <span style="margin-left: 20px;">par ${vm.vuPar}</span>
+                </td>
+            </tr>
+            
             <tr>
                 <td><b>Apte : <g:if test="${vm.apte != "null"}">${vm.apte == "temporaire" ? "Inapte temporairement" : vm.apte }</g:if></b></td>
-                <td>Nature : ${vm.natureVM}</td>
+                <td><b>Nature</b> : ${nature_text}</td>
             </tr>
+           
             <tr>
                 <td colspan="2"><br/><g:if test="${vm.amenagement}">Travail réalisable sans aménagement particulier autre que les règles communes de prévention adaptées au poste : <b>OUI</b></g:if><br/></td>
             </tr>
@@ -95,15 +125,26 @@
         </table>
         <p style="border-top: #333333;border-top-style: solid;border-top-width: 0.1mm; padding: 0; margin: 0;"><br/><b>Dernière VM : </b><g:if test="${vm.dateDerniereVM}"><g:formatDate format="dd MMM yyyy" date="${vm.dateDerniereVM}"/></g:if></p>
         <table>
+           
             <tr>
                 <td>
-                    <p style="width: 60mm; padding: 0; margin: 0;"><b>Courriel Agent : </b><g:formatDate format="dd MMM yyyy" date="${vm.dateEnvoisCourrierAgent}"/></p>
+                    <p style="width: 60mm; padding: 0; margin: 0; text-align:left;"><b>Courriel Agent : </b><g:formatDate format="dd MMM yyyy" date="${vm.dateEnvoisCourrierAgent}"/></p>
                 </td>
                 <td>
                     <p style="width: 50mm; padding: 0; margin: 0;"><b>Courriel DU + RRH : </b><g:formatDate format="dd MMM yyyy" date="${vm.dateEnvoisCourrierDURRH}"/></p>
                 </td>
             </tr>
         </table>
+
+
+        <g:if test="${vm.dateProchaineVm}">
+            <p>
+                À revoir avant le <b><g:formatDate format="dd MMM yyyy" date="${vm.dateProchaineVm}"/> </b>
+                en <b>${vm.vuProchaineVm}</b> par <b>${vm.vuParProchaineVm}</b>
+            </p>
+        </g:if>
+
+
         <p>Cachet et signature du médecin:</p>
         <br/><br/><br/><br/>
         <p><i>Pensez ENVIRONNEMENT : n'imprimez que si nécessaire</i></p>

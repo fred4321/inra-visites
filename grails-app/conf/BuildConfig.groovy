@@ -38,7 +38,11 @@ grails.project.dependency.resolution = {
         grailsPlugins()
         grailsHome()
         mavenLocal()
-        grailsCentral()
+        //grailsCentral()
+        mavenRepo "https://grails.jfrog.io/grails/core/"
+        mavenRepo "https://grails.jfrog.io/grails/plugins/"
+
+
         mavenCentral()
         // uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
         //mavenRepo "http://repository.codehaus.org"
@@ -70,7 +74,7 @@ grails.project.dependency.resolution = {
 
         compile ":rendering:1.0.0"
         compile ":mandrill:0.5"
-        compile ":export:1.5"
+        //compile ":export:1.5"
         compile ":mail:1.0.7"
         //compile ':jasypt-encryption:1.3.1'
     }

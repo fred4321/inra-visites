@@ -5,26 +5,28 @@
     <div class="col-md-12">
         <div ng-if="loading" class="loading glyphicon glyphicon-refresh glyphicon-refresh-animate"></div>
         <table ng-table="creneauT.ngTable" show-filter="true" class="table table-hover table-bordered table-striped table-condensed" export-csv="csv">
-                <tr ng-repeat="creneau in $data">
-                    <td data-title="'Fiche de VM'" filter="{'id':'text'}" sortable="'id'"><a class="openModal" ng-click="openVM(creneau.id)">n° : {{creneau.id}}</a></td>
-                    <td data-title="'Date de VM'" filter="{'date':'text'}" sortable="'date'">{{creneau.date|date}}</td>
-                    <td data-title="'Site'" filter="{'site':'text'}" sortable="'site'">{{creneau.site}}</td>
-                    <td data-title="'Créneau'" filter="{'creneau':'text'}" sortable="'creneau'">{{creneau.creneau}}</td>
-                    <td data-title="'Matricule'" filter="{'matricule':'text'}" sortable="'matricule'"><a class="openModal" ng-click="openAgent(creneau.idAgent)">{{creneau.matricule}}</a></td>
-                    <td data-title="'Nom'" filter="{'nom':'text'}" sortable="'nom'">{{creneau.nom}}</td>
-                    <td data-title="'Prénom'" filter="{'prenom':'text'}" sortable="'prenom'">{{creneau.prenom}}</td>
-                    <td data-title="'Emploi'" filter="{'libEmploi':'text'}" sortable="'libEmploi'">{{creneau.libEmploi}}</td>
+            <tr ng-repeat="creneau in $data">
+                <td data-title="'Fiche de VM'" filter="{'id':'text'}" sortable="'id'"><a class="openModal" ng-click="openVM(creneau.id)">n° : {{creneau.id}}</a>
+                </td>
+                <td data-title="'Date de VM'" filter="{'date':'text'}" sortable="'date'">{{creneau.date|date}}</td>
+                <td data-title="'Site'" filter="{'site':'text'}" sortable="'site'">{{creneau.site}}</td>
+                <td data-title="'Créneau'" filter="{'creneau':'text'}" sortable="'creneau'">{{creneau.creneau}}</td>
+                <td data-title="'Matricule'" filter="{'matricule':'text'}" sortable="'matricule'"><a class="openModal"
+                        ng-click="openAgent(creneau.idAgent)">{{creneau.matricule}}</a></td>
+                <td data-title="'Nom'" filter="{'nom':'text'}" sortable="'nom'">{{creneau.nom}}</td>
+                <td data-title="'Prénom'" filter="{'prenom':'text'}" sortable="'prenom'">{{creneau.prenom}}</td>
+                <td data-title="'Emploi'" filter="{'libEmploi':'text'}" sortable="'libEmploi'">{{creneau.libEmploi}}</td>
 
-                    <td data-title="'Unité'" filter="{'unite':'text'}" sortable="'unite'">{{creneau.unite}}</td>
-                    <td data-title="'Nature de VM'" filter="{'natureVM':'text'}" sortable="'natureVM'">{{creneau.natureVM}}</td>
-                    <td data-title="'@ de Convocation'" filter="{'dateConvoc':'text'}" sortable="'dateConvoc'">{{creneau.dateConvoc|date}}</td>
-                    <td class="action">
-                        <a tooltip-placement="top" tooltip="Envoi récapitulatif Agent" ng-show="access">
-                            <span ng-class="{hidden: creneau.sendMail}" class="glyphicon glyphicon-envelope text-primary" ng-click="recap(creneau)" ></span>
-                            <span ng-class="{hidden: !creneau.sendMail}" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
-                        </a>
-                    </td>
-                </tr>
+                <td data-title="'Unité'" filter="{'unite':'text'}" sortable="'unite'">{{creneau.unite}}</td>
+                <td data-title="'Nature de VM'" filter="{'natureVM':'text'}" sortable="'natureVM'">{{creneau.natureVM|nature}}</td>
+                <td data-title="'@ de Convocation'" filter="{'dateConvoc':'text'}" sortable="'dateConvoc'">{{creneau.dateConvoc|date}}</td>
+                <td class="action">
+                    <a tooltip-placement="top" tooltip="Envoi récapitulatif Agent" ng-show="access">
+                        <span ng-class="{hidden: creneau.sendMail}" class="glyphicon glyphicon-envelope text-primary" ng-click="recap(creneau)"></span>
+                        <span ng-class="{hidden: !creneau.sendMail}" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+                    </a>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

@@ -2,7 +2,7 @@
     <div class="modal-header">
         <div class="row">
             <div class="col-sm-6">
-                <h3 class="modal-title" >Fiche Agent</h3>
+                <h3 class="modal-title">Fiche Agent</h3>
             </div>
             <div class="col-sm-6">
                 <a tooltip-placement="top" tooltip="fermer" class="pull-right">
@@ -45,7 +45,7 @@
                             <td>{{v.date|date:'dd/MM/yyyy'}}</td>
                             <td><a class="openModal" ng-click="openVM(v.id)">n° : {{v.id}}</a></td>
                             <td>{{v.statut}}</td>
-                            <td>{{v.natureVM}}</td>
+                            <td>{{v.natureVM|nature}}</td>
                             <td>{{agent.dateArretTravail|date:'dd/MM/yyyy'}}</td>
                             <td>{{v.dateEnvoisCourrierAgent|date:'dd/MM/yyyy'}}</td>
                         </tr>
@@ -93,10 +93,12 @@
                     </div>
                     <label class="col-sm-2 control-label">Nature VM</label>
                     <div class="col-sm-3">
-                        <select ng-disabled="!access" class="form-control input-xs" name="natureVM" ng-model="agent.natureVM" ng-options="nature for nature in natureVM"></select>
+                        <select ng-disabled="!access" class="form-control input-xs" name="natureVM" ng-model="agent.natureVM"
+                            ng-options="nature.value as nature.text for nature in natureVM"></select>
                     </div>
                     <div class="col-sm-4">
-                        <input ng-disabled="!access" class="form-control input-xs"  type="text"  placeholder="autre" name="autreNatureVM" ng-model="agent.autreNatureVM">
+                        <input ng-disabled="!access" class="form-control input-xs" type="text" placeholder="autre" name="autreNatureVM"
+                            ng-model="agent.autreNatureVM">
                     </div>
                 </form>
             </div>
@@ -125,7 +127,7 @@
             <div class="col-sm-9">
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" ng-model="agent.archive" ng-disabled="!access" >ARCHIVER
+                        <input type="checkbox" ng-model="agent.archive" ng-disabled="!access">ARCHIVER
                     </label>
                 </div>
             </div>

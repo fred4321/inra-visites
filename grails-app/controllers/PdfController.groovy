@@ -10,7 +10,7 @@ class PdfController {
                 }else {
                     vm = VM.get(params.id).getLimitVm()
                 }
-                if(vm) {
+                if(vm) {                
                     renderPdf(template:'vm', model: [vm:vm, user:session.user, pdf:true], filename : "vm-" + vm.id + ".pdf")
                     log.info("impression de la vm " + vm.id + " pour " + session.user.identifiant)
                 }

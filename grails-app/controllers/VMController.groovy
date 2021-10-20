@@ -429,6 +429,18 @@ class VMController {
     }
 
     def update() {
+        def sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        def sdf2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+
+        def to_date = { s->
+            if (!s) return null
+            try {
+                return sdf.parse(s)
+            } catch(e) {
+                return sdf2.parse(s)
+            }
+        }
+
         if(session.user) {
             def data = request.JSON//méthode qui récupère du json
             if(data && data.id) {
@@ -439,6 +451,13 @@ class VMController {
                     vm.amenagement = data.amenagement ? data.amenagement : false
                     vm.modification = new Date()
                     vm.refMedecin = data.refMedecin
+
+                    vm.vu = data.vu
+                    vm.vuPar = data.vuPar
+                    vm.dateProchaineVm = to_date(data.dateProchaineVm)
+                    vm.vuProchaineVm = data.vuProchaineVm
+                    vm.vuParProchaineVm = data.vuParProchaineVm
+
                     if(vm.validate()) {
                         vm.save()
                         new Journal(ref:vm.id, date:new Date(), operation:"Modification", typeObject:"VM", nom:vm.agent.nom, prenom:vm.agent.prenom, matricule:vm.agent.matricule, unite:vm.agent.unite.nom, user:session.user.identifiant).save()

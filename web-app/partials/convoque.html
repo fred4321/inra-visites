@@ -4,19 +4,20 @@
     </div>
     <div class="col-md-12">
         <div ng-if="loading" class="loading glyphicon glyphicon-refresh glyphicon-refresh-animate"></div>
-        <table ng-table="vmt.ngTable"  show-filter="true" class="table table-condensed table-bordered table-hover table-striped" export-csv="csv">
+        <table ng-table="vmt.ngTable" show-filter="true" class="table table-condensed table-bordered table-hover table-striped" export-csv="csv">
             <tr ng-repeat="agent in $data">
                 <td data-title="'Convocation'" filter="{'dateConvoc':'text'}" sortable="'dateConvoc'">{{agent.dateConvoc|date}}</td>
-                <td data-title="'Matricule'" filter="{'matricule':'text'}" sortable="'matricule'"><a class="openModal" ng-click="openAgent(agent.idAgent)">{{agent.matricule}}</a></td>
+                <td data-title="'Matricule'" filter="{'matricule':'text'}" sortable="'matricule'"><a class="openModal"
+                        ng-click="openAgent(agent.idAgent)">{{agent.matricule}}</a></td>
                 <td data-title="'Nom'" filter="{'nom':'text'}" sortable="'nom'">{{agent.nom}}</td>
                 <td data-title="'Prénom'" filter="{'prenom':'text'}" sortable="'prenom'">{{agent.prenom}}</td>
                 <td data-title="'Site'" filter="{'site':'select'}" filter-data="getSites()" sortable="'site'">{{agent.site}}</td>
                 <td data-title="'Unité'" filter="{'unite':'select'}" filter-data="getUnites()" sortable="'unite'">{{agent.unite}}</td>
                 <td data-title="'Périodicité'" filter="{'periodicite':'select'}" filter-data="getPeriodes()" sortable="'periodicite'">{{agent.periodicite}}</td>
-                <td data-title="'Nature de VM'" filter="{'natureVM':'select'}" filter-data="getNatures()" sortable="'natureVM'">{{agent.natureVM}}</td>
+                <td data-title="'Nature de VM'" filter="{'natureVM':'select'}" filter-data="getNatures()" sortable="'natureVM'">{{agent.natureVM | nature}}</td>
                 <td data-title="'Dernière Visite'" filter="{'date':'text'}" sortable="'date'">{{agent.date|date}}</td>
             </tr>
         </table>
     </div>
-    <inra-pagination total-items="totalItems" change-page="reload" change-items-per-pages="reload" params="filter" ></inra-pagination>
+    <inra-pagination total-items="totalItems" change-page="reload" change-items-per-pages="reload" params="filter"></inra-pagination>
 </div>

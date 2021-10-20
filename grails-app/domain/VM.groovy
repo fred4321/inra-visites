@@ -41,6 +41,13 @@ class VM {
     
     boolean amenagement
     
+    String vu // présentiel ou téléconsultation
+    String vuPar // médecin / infirmier
+
+    Date dateProchaineVm
+    String vuProchaineVm // présentiel ou téléconsultation
+    String vuParProchaineVm // médecin / infirmier
+
     static belongsTo = [agent : Agent, unite : Unite]
     static hasMany = [observations : Observation, conclusions : Observation]
         
@@ -71,6 +78,12 @@ class VM {
         sDateEnvoisCourrierAgent(nullable:true)
         sDateEnvoisCourrierDURRH(nullable:true)
         sModification(nullable:true)
+
+        vu(nullable:true)
+        vuPar(nullable:true)
+        dateProchaineVm(nullable:true)
+        vuProchaineVm(nullable:true)
+        vuParProchaineVm(nullable:true)
     }
     
     def beforeValidate() {
