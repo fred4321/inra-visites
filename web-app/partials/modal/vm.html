@@ -147,6 +147,7 @@
 
                                     <span style="margin-left:10px;">
                                         par
+                                        <span ng-if="!medecin">{{vm.vuPar}}</span>
                                         <select ng-if="medecin" ng-model="vm.vuPar" ng-options="vuPar for vuPar in vusPar"></select>
                                     </span>
 
@@ -248,7 +249,10 @@
                             <label class="col-sm-3 control-label text-right">À revoir avant le </label>
 
                             <div class="col-sm-2">
-                                <span ng-click="medecin && calendrierDerniereVm.open($event)" name="dateProchaineVm" id="dateProchaineVm"
+                                <span ng-if="!medecin">
+                                    {{vm.dateProchaineVm | date}}
+                                </span>
+                                <span ng-if="medecin" ng-click="calendrierDerniereVm.open($event)" name="dateProchaineVm" id="dateProchaineVm"
                                     class="form-control input-xs" datepicker-popup="{{calendrierDerniereVm.format}}" is-open="calendrierDerniereVm.opened"
                                     close-text="Fermer" show-button-bar="false" ng-model="vm.dateProchaineVm" value="vm.dateProchaineVm">{{vm.dateProchaineVm|
                                     date}}</span>
@@ -265,6 +269,9 @@
 
                             <span style="margin-left:10px;">
                                 par
+                                <span ng-if="!medecin">
+                                    {{vm.vuParProchaineVm}}
+                                </span>
                                 <select ng-if="medecin" ng-model="vm.vuParProchaineVm" ng-options="vuPar for vuPar in vusPar"></select>
                             </span>
 
