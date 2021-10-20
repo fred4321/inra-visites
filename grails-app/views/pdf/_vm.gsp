@@ -79,7 +79,7 @@
                     <span style="float:left"><b>Vu en </b> </span>                  
                     <div class="checkbox">${vm.vu=='présentiel' ? 'X' : ''}</div> <span style="float:left">en présentiel</span>
                     <div class="checkbox">${vm.vu=='téléconsultation' ? 'X' : ''}</div> <span style="float:left;">en téléconsultation</span>
-                    <span style="margin-left: 20px;">par ${vm.vuPar}</span>
+                    <g:if test="${vm.vuPar}"><span style="margin-left: 20px;">par ${vm.vuPar}</span></g:if>
                 </td>
             </tr>
             
