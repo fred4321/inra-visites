@@ -46,7 +46,7 @@
             <img src="${ pdf ? "web-app" : "" }/img/republique-francaise.png" alt="logo INRA" style="width:2cm;"/>
             <img src="${ pdf ? "web-app" : "" }/img/logo-INRA-transp-small.png" alt="logo INRA" style="width:3.5cm;float:right;"/>
         </div>
-        <h2 xxstyle="padding-top: 1cm;">
+        <h2>
             Fiche de visite de médecine de prévention n° ${vm.id}
         </h2>
         <table>
