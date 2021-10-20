@@ -23,8 +23,8 @@
     </head>
     <body>
         <div>
-            <img src="${ pdf ? "web-app" : "" }/img/republique-francaise.png" alt="logo INRA" style="width:2cm;"/>
-            <img src="${ pdf ? "web-app" : "" }/img/logo-INRA-transp-small.png" alt="logo INRA" style="width:3.5cm;float:right;"/>
+            <img src="/img/republique-francaise.png" alt="logo INRA" style="width:2cm;"/>
+            <img src="/img/logo-INRA-transp-small.png" alt="logo INRA" style="width:3.5cm;float:right;"/>
         </div>
         
         <h2 style="border-bottom: #333333;border-bottom-style: solid;border-bottom-width: 0.1mm;">

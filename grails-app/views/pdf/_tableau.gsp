@@ -27,10 +27,10 @@
     </head>
     <body>
         <div>
-            <img src="${ pdf ? "web-app" : "" }/img/republique-francaise.png" alt="logo INRA" style="width:2cm;"/>
-            <img src="${ pdf ? "web-app" : "" }/img/logo-INRA-transp-small.png" alt="logo INRA" style="width:3.5cm;float:right;"/>
+            <img src="/img/republique-francaise.png" alt="logo INRA" style="width:2cm;"/>
+            <img src="/img/logo-INRA-transp-small.png" alt="logo INRA" style="width:3.5cm;float:right;"/>
         </div>
-        
+
         <table>
             <tr>
                 <g:each in="${titles}" var="t" >
